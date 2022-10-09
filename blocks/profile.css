@@ -83,35 +83,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 845px) {
-  .profile {
-    margin: 0 auto;
-  }
-
-  .profile__title {
-    max-width: 230px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .profile__subtitle {
-    max-width: 230px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  .profile__title-button {
-    width: 24px;
-    height: 24px;
-    margin-right: 20px;
-  }
-}
-
-@media screen and (max-width: 580px) {
+@media screen and (min-width: 320px) and (max-width: 530px) {
   .profile {
     flex-direction: column;
     padding: 0;
@@ -164,5 +136,33 @@
     background-position: 50%;
     margin: 0;
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 531px) and (max-width: 950px) {
+  .profile {
+    margin: 0 auto;
+  }
+
+  .profile__title {
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .profile__subtitle {
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .profile__title-button {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
   }
 }
