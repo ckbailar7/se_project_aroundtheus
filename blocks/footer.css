@@ -1,3 +1,8 @@
+.footer {
+  padding-top: 67px;
+  padding-bottom: 60px;
+}
+
 .footer__text {
   margin: 0;
   color: #545454;
@@ -14,6 +19,6 @@
   .footer__text {
     font-size: 14px;
     line-height: 16.94px;
-    max-width: 282px;
+    padding: 48px 19px 36px 19px;
   }
 }

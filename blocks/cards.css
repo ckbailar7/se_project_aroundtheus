@@ -1,8 +1,8 @@
-.card {
+.cards {
   margin: 0 auto;
-  justify-items: center;
+  justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+  grid-template-columns: repeat(auto-fill, 282px);
   column-gap: 17px;
   row-gap: 20px;
 }
@@ -11,7 +11,6 @@
   width: 282px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #fff;
 }
 
 .card__image {
@@ -19,6 +18,7 @@
 }
 
 .card__footer {
+  background-color: #fff;
   display: flex;
   color: #000;
 }
@@ -47,9 +47,10 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 530px) {
-  .card {
+@media screen and (min-width: 320px) and (max-width: 720px) {
+  .cards {
     max-width: calc(100% - 38px);
+    justify-items: center;
     margin: auto;
     grid-template-columns: 1fr;
     grid-template-rows: 6fr;
