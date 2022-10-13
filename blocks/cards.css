@@ -14,7 +14,7 @@
   background-color: #fff;
 }
 
-.card__card {
+.card__image {
   height: 282px;
 }
 
@@ -27,7 +27,7 @@
   flex-grow: 1;
   margin: 25px 0 25px 20px;
   font-size: 24px;
-  font-family: "Inter Black";
+  font-family: "Inter";
   font-weight: 900;
   line-height: 29.05px;
   overflow: hidden;
@@ -48,7 +48,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 530px) {
-  .elements {
+  .card {
     max-width: calc(100% - 38px);
     margin: auto;
     grid-template-columns: 1fr;
