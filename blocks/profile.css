@@ -41,7 +41,7 @@
   height: 24px;
   margin-left: 18px;
   padding: 0;
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   background-color: transparent;
   background-image: url("../images/profile_titlebtn.svg");
@@ -58,7 +58,7 @@
 .profile__subtitle {
   max-width: 415px;
   margin: 0;
-  padding-top: 16px;
+  padding-top: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
