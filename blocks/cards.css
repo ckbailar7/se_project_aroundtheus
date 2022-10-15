@@ -16,3 +16,10 @@
     grid-template-rows: 6fr;
   }
 }
+
+@media screen and (min-width: 730px) and (max-width: 880px) {
+  .cards {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}

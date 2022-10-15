@@ -13,3 +13,9 @@ This Project uses flexbox and Grid to create a responsive and easy on the eyes s
 Github Pages Link
 
 https://ckbailar7.github.io/se_project_aroundtheus/
+
+\*\*\*Images
+
+![screenshot of mobile resolution](./images/mobile.png)
+![screenshot of tablet resolution](./images/tablet.png)
+![screenshot of mobile resolution](./images/desktop.png)

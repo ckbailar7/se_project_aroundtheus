@@ -1,22 +1,8 @@
 @import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
 @import url("../blocks/page.css");
 @import url("../blocks/header.css");
 @import url("../blocks/profile.css");
 @import url("../blocks/cards.css");
 @import url("../blocks/card.css");
 @import url("../blocks/footer.css");
-
-@font-face {
-  font-family: "Inter Regular";
-  src: url(../fonts/static/Inter-Regular.ttf);
-}
-
-@font-face {
-  font-family: "Inter Medium";
-  src: url(../fonts/static/Inter-Medium.ttf);
-}
-
-@font-face {
-  font-family: "Inter Black";
-  src: url(../fonts/static/Inter-Black.ttf);
-}
