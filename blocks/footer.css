@@ -18,6 +18,7 @@
   .footer__text {
     font-size: 14px;
     line-height: 16.94px;
+    padding: 0;
   }
 
   .footer {
