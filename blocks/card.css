@@ -1,0 +1,39 @@
+.card__container {
+  width: 282px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__image {
+  height: 282px;
+}
+
+.card__footer {
+  background-color: #fff;
+  display: flex;
+  color: #000;
+}
+
+.card__name {
+  flex-grow: 1;
+  margin: 25px 0 25px 20px;
+  font-size: 24px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  line-height: 29.05px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card__likebtn {
+  background-color: transparent;
+  margin-right: 20px;
+  padding: 0;
+  border: none;
+}
+
+.card__likebtn:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

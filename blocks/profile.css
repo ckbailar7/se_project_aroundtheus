@@ -29,7 +29,7 @@
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -75,7 +75,6 @@
   flex-wrap: wrap;
   flex-shrink: 0;
   border-radius: 2px;
-  padding: 0;
   background-size: 22px 22px;
   background-color: transparent;
   background-image: url("../images/profile__btn.svg");
@@ -151,6 +150,10 @@
     margin: 0 auto;
   }
 
+  .profile__image {
+    margin-left: 20px;
+  }
+
   .profile__title {
     max-width: 230px;
     overflow: hidden;
@@ -165,6 +168,10 @@
     text-overflow: ellipsis;
     text-align: left;
     white-space: nowrap;
+  }
+
+  .profile__button {
+    margin-right: 20px;
   }
 
   .profile__title-button {
