@@ -25,19 +25,6 @@ const initialCards = [
   },
 ];
 
-// let titleButton = document.querySelector(".profile__title-button");
-// let modal = document.querySelector(".modal");
-
-// //Hide the Modal Box
-// modal.setAttribute("style", "display: none");
-
-// function modalDisplay() {
-//   modal.setAttribute("style", "display: block");
-// }
-
-// //Event listener for clicking the button
-// titleButton.addEventListener("click", modalDisplay());
-
 const openEditModalButton = document.querySelector(".profile__title-button");
 const popUp = document.querySelector(".modal");
 const closeEditModalButton = document.querySelector(".modal-button");
