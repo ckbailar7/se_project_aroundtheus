@@ -72,6 +72,8 @@ function renderCard(card, wrapper) {
 //Open Modal Popup
 openEditModalButton.addEventListener("click", () => {
   popUp.classList.add("modal__opened");
+  // modalEditForm.querySelector("modal__container-name").textContent =
+  //   profileNameElement;
 });
 
 //Close Modal Popup
