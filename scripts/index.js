@@ -58,7 +58,8 @@ function createCardElement(card) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__name");
 
-  cardImage.src = `url(${card.link})`;
+  cardImage.style.backgroundImage = `url(${card.link})`;
+
   cardTitle.textContent = card.name;
 
   return cardElement;
