@@ -4,11 +4,17 @@
   left: 50%;
   margin-top: -186px;
   margin-left: -215px;
-  display: none;
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .modal__opened {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 .modal-button {
   background: transparent url(../images/closeIcon.png) center no-repeat;
@@ -83,6 +89,12 @@
   font-weight: 400;
   line-height: 1.2;
   border-radius: 2px;
+  transition: 0.13s linear;
+  cursor: pointer;
+}
+
+.modal__container-button:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 636px) {

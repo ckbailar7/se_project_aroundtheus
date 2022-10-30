@@ -29,13 +29,13 @@ const initialCards = [
 //Node Buttons///////////////////////////////////////
 
 //Main modal Container that has the "modal__opened" class added when the edit button is "clicked"
-const popUp = document.querySelector(".modal");
+const profilePopup = document.querySelector(".modal");
 //Select Modal Form
 const modalEditForm = document.querySelector("#edit-modal-form");
 //Open Button
-const openEditModalButton = document.querySelector(".profile__title-button");
+const modalButtonOpen = document.querySelector(".profile__title-button");
 //Close Button
-const closeEditModalButton = document.querySelector(".modal-button");
+const modalButtonClose = document.querySelector(".modal-button");
 //Profile Name
 const profileNameElement = document.querySelector(".profile__title");
 //Profile Description
@@ -69,16 +69,26 @@ function renderCard(card, wrapper) {
   wrapper.append(createCardElement(card));
 }
 
+// function openPopup(profilePopup) {
+//   modalButtonOpen.addEventListener("click", () => {
+//     profilePopup.classList.add("modal__opened");
+//   });
+// }
+
+// function closePopup() {
+//   modalButtonClose.addEventListener("click", () => {
+//     profilePopup.classList.remove("modal__opened");
+//   });
+// }
+
 //Open Modal Popup
-openEditModalButton.addEventListener("click", () => {
-  popUp.classList.add("modal__opened");
-  // modalEditForm.querySelector("modal__container-name").textContent =
-  //   profileNameElement;
+modalButtonOpen.addEventListener("click", () => {
+  profilePopup.classList.add("modal__opened");
 });
 
 //Close Modal Popup
-closeEditModalButton.addEventListener("click", () => {
-  popUp.classList.remove("modal__opened");
+modalButtonClose.addEventListener("click", () => {
+  profilePopup.classList.remove("modal__opened");
 });
 
 //Edit Modal Form inputs with close on submit but does not refresh page
@@ -90,7 +100,7 @@ modalEditForm.addEventListener("submit", (event) => {
   profileNameElement.textContent = nameValue;
   profileDescriptionElement.textContent = descriptionValue;
 
-  popUp.classList.remove("modal__opened");
+  profilePopup.classList.remove("modal__opened");
 });
 
 initialCards.forEach((card) => renderCard(card, cardWrapper));
