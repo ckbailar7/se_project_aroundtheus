@@ -10,6 +10,18 @@
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
+.modal__add {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -186px;
+  margin-left: -215px;
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
 .modal__opened {
   visibility: visible;
   opacity: 1;

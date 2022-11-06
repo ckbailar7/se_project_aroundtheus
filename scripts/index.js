@@ -26,26 +26,40 @@ const initialCards = [
   },
 ];
 
-//Node Buttons///////////////////////////////////////
+/* -------------------------------------------------------------*/
+/*                         Buttons                              */
+/* -------------------------------------------------------------*/
 
 //Main modal Container that has the "modal__opened" class added when the edit button is "clicked"
 const profilePopup = document.querySelector(".modal");
+const modalAddPopup = document.querySelector(".modal__add");
 //Select Modal Form
 const modalEditForm = document.querySelector("#edit-modal-form");
+//Select ModalAdd Form
+const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
 //Open Button
 const modalButtonOpen = document.querySelector(".profile__title-button");
 //Close Button
 const modalButtonClose = document.querySelector(".modal-button");
+//Close modalAdd Close Button
+const modalAddButtonClose = modalAddPopup.querySelector(".modal-button");
+
 //Profile Name
 const profileNameElement = document.querySelector(".profile__title");
 //Profile Description
 const profileDescriptionElement = document.querySelector(".profile__subtitle");
+//Edit cards Button
+const modalAddButtonOpen = document.querySelector(".profile__button");
 
-//Wrappers//////////////////////////////////////
+/* -------------------------------------------------------------*/
+/*                         Wrappers                             */
+/* -------------------------------------------------------------*/
 
 const cardWrapper = document.querySelector(".cards");
 
-//Functions///////////////////////////////////////
+/* -------------------------------------------------------------*/
+/*                         Functions                             */
+/* -------------------------------------------------------------*/
 
 function createCardElement(card) {
   //Reference to the template
@@ -59,7 +73,6 @@ function createCardElement(card) {
   const cardTitle = cardElement.querySelector(".card__name");
 
   cardImage.style.backgroundImage = `url(${card.link})`;
-
   cardTitle.textContent = card.name;
 
   return cardElement;
@@ -69,18 +82,9 @@ function renderCard(card, wrapper) {
   wrapper.append(createCardElement(card));
 }
 
-// function openPopup(profilePopup) {
-//   modalButtonOpen.addEventListener("click", () => {
-//     profilePopup.classList.add("modal__opened");
-//   });
-// }
-
-// function closePopup() {
-//   modalButtonClose.addEventListener("click", () => {
-//     profilePopup.classList.remove("modal__opened");
-//   });
-// }
-
+/* -------------------------------------------------------------*/
+/*                         User Inputs                          */
+/* -------------------------------------------------------------*/
 //Open Modal Popup
 modalButtonOpen.addEventListener("click", () => {
   profilePopup.classList.add("modal__opened");
@@ -90,6 +94,20 @@ modalButtonOpen.addEventListener("click", () => {
 modalButtonClose.addEventListener("click", () => {
   profilePopup.classList.remove("modal__opened");
 });
+
+//Open Modal Add Button
+modalAddButtonOpen.addEventListener("click", () => {
+  modalAddPopup.classList.add("modal__opened");
+});
+
+//Close ModalAdd Button
+modalAddButtonClose.addEventListener("click", () => {
+  modalAddPopup.classList.remove("modal__opened");
+});
+
+/* -------------------------------------------------------------*/
+/*                         Event Handlers                       */
+/* -------------------------------------------------------------*/
 
 //Edit Modal Form inputs with close on submit but does not refresh page
 modalEditForm.addEventListener("submit", (event) => {
@@ -101,6 +119,15 @@ modalEditForm.addEventListener("submit", (event) => {
   profileDescriptionElement.textContent = descriptionValue;
 
   profilePopup.classList.remove("modal__opened");
+});
+
+modalAddEditForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const modalAddnameValue = event.target.name.value;
+  const modalAddlinkValue = event.target.link.value;
+
+  initialCards.unshift(modalAddnameValue, modalAddlinkValue);
+  console.log(initialCards);
 });
 
 initialCards.forEach((card) => renderCard(card, cardWrapper));
