@@ -79,7 +79,7 @@ function createCardElement(card) {
 }
 
 function renderCard(card, wrapper) {
-  wrapper.append(createCardElement(card));
+  wrapper.prepend(createCardElement(card));
 }
 
 /* -------------------------------------------------------------*/
@@ -124,10 +124,18 @@ modalEditForm.addEventListener("submit", (event) => {
 modalAddEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const modalAddnameValue = event.target.name.value;
-  const modalAddlinkValue = event.target.link.value;
+  const modalAddLinkValue = event.target.link.value;
 
-  initialCards.unshift(modalAddnameValue, modalAddlinkValue);
-  console.log(initialCards);
+  // initialCards.unshift({ name: modalAddnameValue, link: modalAddLinkValue });
+  renderCard(
+    {
+      name: modalAddnameValue,
+      link: modalAddLinkValue,
+    },
+    cardWrapper
+  );
+
+  // console.log(renderCard(initialCards, cardWrapper));
 });
 
 initialCards.forEach((card) => renderCard(card, cardWrapper));
