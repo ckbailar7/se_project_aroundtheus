@@ -28,6 +28,14 @@
   pointer-events: all;
   transition: visibility 0s, opacity 0.5s linear;
 }
+
+.modal__open-add {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: visibility 0s, opacity 0.5s linear;
+  margin-left: 430px;
+}
 .modal-button {
   background: transparent url(../images/closeIcon.png) center no-repeat;
   border: none;

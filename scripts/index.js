@@ -126,7 +126,6 @@ modalAddEditForm.addEventListener("submit", (event) => {
   const modalAddnameValue = event.target.name.value;
   const modalAddLinkValue = event.target.link.value;
 
-  // initialCards.unshift({ name: modalAddnameValue, link: modalAddLinkValue });
   renderCard(
     {
       name: modalAddnameValue,
@@ -134,8 +133,7 @@ modalAddEditForm.addEventListener("submit", (event) => {
     },
     cardWrapper
   );
-
-  // console.log(renderCard(initialCards, cardWrapper));
+  modalAddPopup.classList.remove("modal__opened");
 });
 
 initialCards.forEach((card) => renderCard(card, cardWrapper));
