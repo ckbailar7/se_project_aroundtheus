@@ -29,13 +29,35 @@
 }
 
 .card__likebtn {
+  background-image: url("../images/heartbtn.svg");
   background-color: transparent;
   margin-right: 20px;
-  padding: 0;
+  width: 21px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 10px;
   border: none;
+}
+
+.card__likebtn-change {
+  background-image: url("../images/heartBlack.svg");
 }
 
 .card__likebtn:hover {
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__deletebtn {
+  width: 21px;
+  height: 18px;
+  background: url("../images/Trash.svg");
+  /* position: absolute; */
+  background-size: 21px 18px;
+  padding: 0;
+  margin: 0;
+  top: 15px;
+  right: 15px;
+  border: none;
   cursor: pointer;
 }

@@ -27,7 +27,7 @@ const initialCards = [
 ];
 
 /* -------------------------------------------------------------*/
-/*                         Buttons                              */
+/*                         Selectors                            */
 /* -------------------------------------------------------------*/
 
 //Main modal Container that has the "modal__opened" class added when the edit button is "clicked"
@@ -71,9 +71,15 @@ function createCardElement(card) {
 
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__name");
+  const likeBtn = cardElement.querySelector(".card__likebtn");
 
   cardImage.style.backgroundImage = `url(${card.link})`;
   cardTitle.textContent = card.name;
+
+  likeBtn.addEventListener("click", handleLikeIcon);
+  function handleLikeIcon() {
+    likeBtn.classList.add("card__likebtn-change");
+  }
 
   return cardElement;
 }
