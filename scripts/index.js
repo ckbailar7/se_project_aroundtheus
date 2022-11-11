@@ -102,7 +102,13 @@ const popupWrapper = document.querySelector(".popup");
 //
 //
 //
-//
+/* -------------------------------------------------------------*/
+/*                         Image POPUP                          */
+/* -------------------------------------------------------------*/
+const imagePreview = document.querySelector("#image__preview");
+const popupImage = imagePreview.querySelector(".popup__image");
+const popupImageTitle = imagePreview.querySelector(".popup__caption");
+const previewImagePopup = document.querySelector("#popup__image");
 //
 //
 //
@@ -141,7 +147,9 @@ function createCardElement(card) {
     cardElement.remove();
   }
 
-  cardImage.addEventListener("click", handlePreviewPicture);
+  function openPopup(popupWrapper) {
+    popupWrapper.classList.add("popup__opened");
+  }
 
   //Popup close Button
   const popupCloseButton = document.querySelector(".popup__close-button");
@@ -151,18 +159,27 @@ function createCardElement(card) {
     popupWrapper.classList.remove("popup__opened");
   });
 
-  // card image preview
-  const imagePreview = document.querySelector("#image__preview");
-  const popupImage = imagePreview.querySelector(".popup__image");
-  const popupImageTitle = imagePreview.querySelector(".popup__caption");
-
-  function handlePreviewPicture(card) {
+  cardImage.addEventListener("click", () => {
     popupImage.src = card.link;
-    popupImageTitle.textContent = card.name;
     popupImage.alt = card.name;
+    popupImageTitle.textContent = card.name;
+    openPopup(popupWrapper);
+  });
 
-    popupWrapper.classList.add("popup__opened");
-  }
+  // card image preview
+  // const imagePreview = document.querySelector("#image__preview");
+  // const popupImage = imagePreview.querySelector(".popup__image");
+  // const popupImageTitle = imagePreview.querySelector(".popup__caption");
+
+  // function handlePreviewPicture(card) {
+  //   popupImage.src = card.link;
+  //   popupImageTitle.textContent = card.name;
+  //   popupImage.alt = card.name;
+
+  //   popupWrapper.classList.add("popup__opened");
+  // }
+
+  // cardImage.addEventListener("click", handlePreviewPicture);
 
   return cardElement;
 }
