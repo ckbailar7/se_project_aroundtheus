@@ -47,6 +47,10 @@
   cursor: pointer;
 }
 
+.modal-button:hover {
+  opacity: 0.5;
+}
+
 .modal__container {
   display: flex;
   flex-direction: column;
@@ -115,6 +119,7 @@
 
 .modal__container-button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 636px) {

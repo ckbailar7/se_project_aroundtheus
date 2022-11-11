@@ -45,77 +45,50 @@
       <footer class="footer">
         <p class="footer__text">&copy; 2022 Around The US</p>
       </footer>
+    </div>
 
-      <div class="modal">
-        <button class="modal-button" type="button"></button>
-        <form class="modal__container" id="edit-modal-form">
-          <h2 class="modal__container-title">Edit Profile</h2>
-          <input
-            name="name"
-            class="modal__container-name"
-            type="text"
-            placeholder="Name"
-          />
-          <input
-            name="description"
-            class="modal__container-description"
-            type="text"
-            placeholder="Description"
-          />
-          <button class="modal__container-button">Save</button>
-        </form>
-      </div>
-      <div class="modal__add">
-        <button class="modal-button" type="button"></button>
-        <form class="modal__container" id="edit-modalAdd-form">
-          <h2 class="modal__container-title">New Place</h2>
-          <input
-            name="name"
-            class="modal__container-name"
-            type="text"
-            placeholder="Title"
-          />
-          <input
-            name="link"
-            class="modal__container-description"
-            type="text"
-            placeholder="Image Link"
-          />
-          <button class="modal__container-button">Save</button>
-        </form>
-      </div>
-
-      <!-- <div class="popup">
-        <div class="popup__content">
-          <button type="button" class="popup-closebtn"></button>
-          <img
-            class="popup__preview-image"
-            src="https://code.s3.yandex.net/web-code/yosemite.jpg"
-            alt=""
-          />
-        </div>
-      </div> -->
-
-      <!-- <div class="popup" id="image_preview">
-        <button
-          class="popup__close-button popup__close-preview"
-          id="image_preview-close"
-          type="button"
-        ></button>
-        <img
-          class="popup__image"
-          alt="#"
-          src="https://images.unsplash.com/photo-1562263075-da00b5209d88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    <div class="modal">
+      <button class="modal-button" type="button"></button>
+      <form class="modal__container" id="edit-modal-form">
+        <h2 class="modal__container-title">Edit Profile</h2>
+        <input
+          name="name"
+          class="modal__container-name"
+          type="text"
+          placeholder="Name"
         />
-        <h3 class="popup__image-title"></h3>
-      </div>
-    </div> -->
-
-    
+        <input
+          name="description"
+          class="modal__container-description"
+          type="text"
+          placeholder="Description"
+        />
+        <button class="modal__container-button">Save</button>
+      </form>
+    </div>
+    <div class="modal__add">
+      <button class="modal-button" type="button"></button>
+      <form class="modal__container" id="edit-modalAdd-form">
+        <h2 class="modal__container-title">New Place</h2>
+        <input
+          name="name"
+          class="modal__container-name"
+          type="text"
+          placeholder="Title"
+        />
+        <input
+          name="link"
+          class="modal__container-description"
+          type="text"
+          placeholder="Image Link"
+        />
+        <button class="modal__container-button">Save</button>
+      </form>
+    </div>
 
     <template id="card-template">
       <article class="card">
-        <img src="" alt="" class="card__image" />
+        <img src=" " alt="" class="card__image" />
         <button type="button" class="card__deletebtn"></button>
 
         <div class="card__footer">
@@ -125,11 +98,10 @@
       </article>
     </template>
 
-
-    <div class="popup" id="image__preview" >
-      <div class="popup__content popup__content-image-preview"  >
+    <div class="popup" id="image__preview">
+      <div class="popup__content popup__content-image-preview">
         <button type="button" class="popup__close-button"></button>
-        <img class="popup__image" src="" alt="">
+        <img class="popup__image" src=" " alt="" />
         <p class="popup__caption"></p>
       </div>
     </div>
