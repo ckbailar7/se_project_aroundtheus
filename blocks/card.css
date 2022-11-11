@@ -2,6 +2,7 @@
   width: 282px;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -48,16 +49,28 @@
   cursor: pointer;
 }
 
+/* .card__deletebtn {
+  background-image: url("../images/Trash.svg");
+  background-color: transparent;
+  margin-right: 20px;
+  width: 21px;
+  top: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 10px;
+  border: none;
+} */
+
 .card__deletebtn {
   width: 21px;
   height: 18px;
-  background: url("../images/Trash.svg");
-  /* position: absolute; */
+  background: url("../images/Trash.svg") transparent center no-repeat;
   background-size: 21px 18px;
-  padding: 0;
-  margin: 0;
-  top: 15px;
-  right: 15px;
   border: none;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
