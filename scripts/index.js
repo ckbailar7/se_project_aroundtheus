@@ -25,136 +25,51 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* -------------------------------------------------------------*/
 /*                         Selectors                            */
 /* -------------------------------------------------------------*/
-
-//Main modal Container that has the "modal__opened" class added when the edit button is "clicked"
 const profilePopup = document.querySelector(".modal");
 const modalAddPopup = document.querySelector(".modal__add");
-//Select Modal Form
 const modalEditForm = document.querySelector("#edit-modal-form");
-//Select ModalAdd Form
 const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
-//Open Button
 const modalButtonOpen = document.querySelector(".profile__title-button");
-//Close Button
 const modalButtonClose = document.querySelector(".modal-button");
-//Close modalAdd Close Button
 const modalAddButtonClose = modalAddPopup.querySelector(".modal-button");
-//Profile Name
 const profileNameElement = document.querySelector(".profile__title");
-//Profile Description
 const profileDescriptionElement = document.querySelector(".profile__subtitle");
-//Edit cards Button
 const modalAddButtonOpen = document.querySelector(".profile__button");
 /* -------------------------------------------------------------*/
-/*                         Wrappers                             */
+/*                        -- Wrappers                             */
 /* -------------------------------------------------------------*/
 const cardWrapper = document.querySelector(".cards");
 const popupWrapper = document.querySelector(".popup");
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* -------------------------------------------------------------*/
-/*                         Image POPUP                          */
+/*                         -- Image POPUP                          */
 /* -------------------------------------------------------------*/
 const imagePreview = document.querySelector("#image__preview");
 const popupImage = imagePreview.querySelector(".popup__image");
 const popupImageTitle = imagePreview.querySelector(".popup__caption");
 const previewImagePopup = document.querySelector("#popup__image");
-//
-//
-//
-//
-//
-//
 /* -------------------------------------------------------------*/
 /*                         Functions                             */
 /* -------------------------------------------------------------*/
-
 function createCardElement(card) {
-  //Reference to the template
   const cardTemplate =
     document.querySelector("#card-template").content.firstElementChild;
-
-  //cloning the template for use
   const cardElement = cardTemplate.cloneNode(true);
-
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__name");
   const likeBtn = cardElement.querySelector(".card__likebtn");
-  //Trash Icon
   const deleteButton = cardElement.querySelector(".card__deletebtn");
+  //Popup close Button
+  const popupCloseButton = document.querySelector(".popup__close-button");
 
   cardImage.style.backgroundImage = `url(${card.link})`;
   cardTitle.textContent = card.name;
 
   likeBtn.addEventListener("click", handleLikeIcon);
-  function handleLikeIcon() {
-    likeBtn.classList.add("card__likebtn-change");
-  }
-
   deleteButton.addEventListener("click", cardDeletebtn);
-
-  function cardDeletebtn() {
-    cardElement.remove();
-  }
-
-  function openPopup(popupWrapper) {
-    popupWrapper.classList.add("popup__opened");
-  }
-
-  //Popup close Button
-  const popupCloseButton = document.querySelector(".popup__close-button");
-
-  // //Close popUp Button
   popupCloseButton.addEventListener("click", () => {
     popupWrapper.classList.remove("popup__opened");
   });
@@ -166,20 +81,17 @@ function createCardElement(card) {
     openPopup(popupWrapper);
   });
 
-  // card image preview
-  // const imagePreview = document.querySelector("#image__preview");
-  // const popupImage = imagePreview.querySelector(".popup__image");
-  // const popupImageTitle = imagePreview.querySelector(".popup__caption");
+  function handleLikeIcon() {
+    likeBtn.classList.toggle("card__likebtn-change");
+  }
 
-  // function handlePreviewPicture(card) {
-  //   popupImage.src = card.link;
-  //   popupImageTitle.textContent = card.name;
-  //   popupImage.alt = card.name;
+  function cardDeletebtn() {
+    cardElement.remove();
+  }
 
-  //   popupWrapper.classList.add("popup__opened");
-  // }
-
-  // cardImage.addEventListener("click", handlePreviewPicture);
+  function openPopup(popupWrapper) {
+    popupWrapper.classList.add("popup__opened");
+  }
 
   return cardElement;
 }
@@ -187,34 +99,6 @@ function createCardElement(card) {
 function renderCard(card, wrapper) {
   wrapper.prepend(createCardElement(card));
 }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */
 /* -------------------------------------------------------------*/
@@ -238,33 +122,6 @@ modalAddButtonClose.addEventListener("click", () => {
   modalAddPopup.classList.remove("modal__opened");
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* -------------------------------------------------------------*/
 /*                         Event Handlers                       */
 /* -------------------------------------------------------------*/
