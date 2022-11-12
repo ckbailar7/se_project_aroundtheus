@@ -10,7 +10,7 @@
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-.modal__type__edit {
+.modal_type_edit {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -22,7 +22,7 @@
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-.modal__type__add {
+.modal_type_add {
   position: fixed;
   top: 50%;
   left: 50%;

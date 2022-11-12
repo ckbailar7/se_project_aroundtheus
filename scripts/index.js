@@ -29,7 +29,7 @@ const initialCards = [
 /*                         Selectors                            */
 /* -------------------------------------------------------------*/
 const profilePopup = document.querySelector(".modal");
-const modalAddPopup = document.querySelector(".modal__type__add");
+const modalAddPopup = document.querySelector(".modal_type_add");
 const modalEditForm = document.querySelector("#edit-modal-form");
 const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
 const modalButtonOpen = document.querySelector(".profile__title-button");
