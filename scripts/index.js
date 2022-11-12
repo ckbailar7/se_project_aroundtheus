@@ -29,12 +29,12 @@ const initialCards = [
 /*                         Selectors                            */
 /* -------------------------------------------------------------*/
 const profilePopup = document.querySelector(".modal");
-const modalAddPopup = document.querySelector(".modal__add");
+const modalAddPopup = document.querySelector(".modal__type__add");
 const modalEditForm = document.querySelector("#edit-modal-form");
 const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
 const modalButtonOpen = document.querySelector(".profile__title-button");
-const modalButtonClose = document.querySelector(".modal-button");
-const modalAddButtonClose = modalAddPopup.querySelector(".modal-button");
+const modalButtonClose = document.querySelector(".modal__button");
+const modalAddButtonClose = modalAddPopup.querySelector(".modal__button");
 const profileNameElement = document.querySelector(".profile__title");
 const profileDescriptionElement = document.querySelector(".profile__subtitle");
 const modalAddButtonOpen = document.querySelector(".profile__button");
