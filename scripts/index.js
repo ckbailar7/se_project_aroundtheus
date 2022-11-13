@@ -71,22 +71,14 @@ function createCardElement(card) {
 
   likeBtn.addEventListener("click", handleLikeIcon);
   deleteButton.addEventListener("click", cardDeletebtn);
-  popupCloseButton.addEventListener("click", closePopup);
+  popupCloseButton.addEventListener("click", closeModal);
 
   cardImage.addEventListener("click", () => {
     popupImage.src = card.link;
     popupImage.alt = card.name;
     popupImageTitle.textContent = card.name;
-    openPopup(imagePreview);
+    openModal(imagePreview);
   });
-
-  function openPopup(profilePopup) {
-    profilePopup.classList.add("modal_opened");
-  }
-
-  function closePopup(profilePopup) {
-    profilePopup.classList.remove("modal_opened");
-  }
 
   function handleLikeIcon() {
     likeBtn.classList.toggle("card__likebtn-change");
@@ -104,32 +96,43 @@ function renderCard(card, wrapper) {
 }
 
 /* -------------------------------------------------------------*/
+/*                         Open/close Universal Functions       */
+/* -------------------------------------------------------------*/
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+/* -------------------------------------------------------------*/
 /*                         User Inputs                          */
 /* -------------------------------------------------------------*/
 
 //Open Modal Popup
 modalButtonOpen.addEventListener("click", () => {
-  profilePopup.classList.add("modal_opened");
+  openModal(profilePopup);
 });
 
 //Close Modal Popup
 modalButtonClose.addEventListener("click", () => {
-  profilePopup.classList.remove("modal_opened");
+  closeModal(profilePopup);
 });
 
 modalButtonImgClose.addEventListener("click", () => {
-  console.log("hello");
-  imagePreview.classList.remove("modal_opened");
+  closeModal(imagePreview);
 });
 
 //Open Modal Add Button
 modalAddButtonOpen.addEventListener("click", () => {
-  modalAddPopup.classList.add("modal_opened");
+  openModal(modalAddPopup);
 });
 
 //Close ModalAdd Button
 modalAddButtonClose.addEventListener("click", () => {
-  modalAddPopup.classList.remove("modal_opened");
+  closeModal(modalAddPopup);
 });
 
 /* -------------------------------------------------------------*/
