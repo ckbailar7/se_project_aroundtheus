@@ -86,11 +86,8 @@
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
 }
 
-.modal__content-image-preview {
-  background-color: transparent;
-  width: 75vw;
-  height: 75vh;
-  position: relative;
+.modal__container-image-preview {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__image {
