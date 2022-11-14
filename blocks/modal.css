@@ -49,14 +49,16 @@
   margin-left: 430px;
 }
 .modal__button {
-  background: transparent url(../images/closeIcon.png) center no-repeat;
-  border: none;
   width: 40px;
   height: 40px;
+  background: transparent url(../images/closeIcon.png) center no-repeat;
+  border: none;
   padding: 0;
-  margin-left: 430px;
-  transition-duration: 0.5s;
+  position: absolute;
+  top: -40px;
+  right: -40px;
   cursor: pointer;
+  transition: 0.5s linear;
 }
 
 .modal__button-img {
@@ -81,6 +83,7 @@
   flex-direction: column;
   border-radius: 10px;
   max-width: 430px;
+  width: 430px;
   height: 330px;
   background: #fff;
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
@@ -181,8 +184,7 @@
     height: 26px;
   }
   .modal__container {
-    max-width: 282px;
-    height: 322px;
+    max-width: 300px;
   }
   .modal__container-title {
     font-size: 18px;
