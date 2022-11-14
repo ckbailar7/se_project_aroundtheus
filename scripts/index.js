@@ -71,8 +71,9 @@ function createCardElement(card) {
   const deleteButton = cardElement.querySelector(".card__deletebtn");
   //Popup close Button
 
-  cardImage.style.backgroundImage = `url(${card.link})`;
+  cardImage.src = card.link;
   cardTitle.textContent = card.name;
+  cardImage.alt = card.name;
 
   likeBtn.addEventListener("click", handleLikeIcon);
   deleteButton.addEventListener("click", handleDeletebtn);

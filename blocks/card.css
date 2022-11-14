@@ -8,6 +8,7 @@
 .card__image {
   display: block;
   height: 282px;
+  width: 376px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
