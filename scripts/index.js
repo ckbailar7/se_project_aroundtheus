@@ -38,8 +38,8 @@ const modalAddButtonClose = modalAddPopup.querySelector(".modal__button");
 const profileNameElement = document.querySelector(".profile__title");
 const profileDescriptionElement = document.querySelector(".profile__subtitle");
 const modalAddButtonOpen = document.querySelector(".profile__button");
-let modalInput = document.querySelector("#modal-name");
-let modalInputDescription = document.querySelector("#modal-description");
+const modalInput = document.querySelector("#modal-name");
+const modalInputDescription = document.querySelector("#modal-description");
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
