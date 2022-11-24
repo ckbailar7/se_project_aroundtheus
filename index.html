@@ -49,41 +49,56 @@
 
     <div class="modal modal_type_edit">
       <button class="modal__button" type="button"></button>
-      <form class="modal__container" id="edit-modal-form">
+      <form novalidate class="modal__container" id="edit-modal-form">
         <h2 class="modal__container-title">Edit Profile</h2>
         <input
           name="name"
-          class="modal__container-name"
+          class="modal__container-name modal__container-input"
           id="modal-name"
           type="text"
           placeholder="Name"
+          required
+          maxlength="40"
+          minlength="2"
+          autocomplete="off"
         />
+        <span class="modal__container-input_error" id="modal-name-error"></span>
         <input
           name="description"
-          class="modal__container-description"
+          class="modal__container-description modal__container-input"
           id="modal-description"
           type="text"
           placeholder="Description"
+          required
+          minlength="2"
+          maxlength="200"
+          autocomplete="off"
         />
+        <span
+          class="modal__container-input_error"
+          id="modal-description-error"
+        ></span>
         <button class="modal__container-button">Save</button>
       </form>
     </div>
     <div class="modal modal_type_add">
       <button class="modal__button" type="button"></button>
-      <form class="modal__container" id="edit-modalAdd-form">
+      <form novalidate class="modal__container" id="edit-modalAdd-form">
         <h2 class="modal__container-title">New Place</h2>
         <input
           name="name"
-          class="modal__container-name"
+          class="modal__container-name modal__container-input"
           type="text"
           placeholder="Title"
         />
+        <span class="modal__container-input_error"></span>
         <input
           name="link"
-          class="modal__container-description"
+          class="modal__container-description modal__container-input"
           type="text"
           placeholder="Image Link"
         />
+        <span class="modal__container-input_error"></span>
         <button class="modal__container-button">Save</button>
       </form>
     </div>
@@ -108,5 +123,6 @@
       </div>
     </div>
     <script src="scripts/index.js"></script>
+    <script src="scripts/validation.js"></script>
   </body>
 </html>
