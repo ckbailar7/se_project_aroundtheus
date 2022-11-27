@@ -57,6 +57,8 @@ const modalButtonImgClose = imagePreview.querySelector(".modal__button");
 const popupImage = imagePreview.querySelector(".modal__image");
 const popupImageTitle = imagePreview.querySelector(".modal__caption");
 const previewImagePopup = document.querySelector("#popup__image");
+const modalTypeEdit = document.querySelector(".modal_type_edit");
+const modalTypePreview = document.querySelector(".modal_type_preview");
 
 /* -------------------------------------------------------------*/
 /*                         Functions                             */
@@ -106,11 +108,61 @@ function renderCard(card, wrapper) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  // modal.addEventListener("mousedown", handleOverlayClose);
+  document.addEventListener("keyup", handleEscUp);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+
+  // modal.removeEventListener("mousedown", handleOverlayClose);
+  document.removeEventListener("keyup", handleEscUp);
 }
+
+/* -------------------------------------------------------------*/
+/*                         -- Esc key start                     */
+/* -------------------------------------------------------------*/
+
+const handleEscUp = (evt) => {
+  evt.preventDefault();
+  isEscEvent(evt, () => closeModal(document.querySelector(".modal_opened")));
+};
+
+const isEscEvent = (evt, action) => {
+  const openModal = document.querySelector("modal_opened");
+  if (evt.which === 27) {
+    action(openModal);
+  }
+};
+
+modalAddPopup.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.contains("modal_opened")
+  ) {
+    closeModal(modalAddPopup);
+  }
+});
+
+modalTypeEdit.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.contains("modal_opened")
+  ) {
+    closeModal(modalTypeEdit);
+  }
+});
+
+modalTypePreview.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.contains("modal_opened")
+  ) {
+    closeModal(modalTypePreview);
+  }
+});
+
+//modalAddPopup -- good
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */

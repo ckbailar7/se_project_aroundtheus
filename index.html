@@ -53,7 +53,7 @@
         <h2 class="modal__container-title">Edit Profile</h2>
         <input
           name="name"
-          class="modal__container-name modal__container-input"
+          class="modal__container-input modal__container-name"
           id="modal-name"
           type="text"
           placeholder="Name"
@@ -63,9 +63,10 @@
           autocomplete="off"
         />
         <span class="modal__container-input_error" id="modal-name-error"></span>
+
         <input
           name="description"
-          class="modal__container-description modal__container-input"
+          class="modal__container-input modal__container-description"
           id="modal-description"
           type="text"
           placeholder="Description"
@@ -87,19 +88,32 @@
         <h2 class="modal__container-title">New Place</h2>
         <input
           name="name"
-          class="modal__container-name modal__container-input"
+          id="modal-name"
+          class="modal__container-input modal__container-name"
           type="text"
           placeholder="Title"
+          required
+          minlength="1"
+          maxlength="30"
+          autocomplete="off"
         />
-        <span class="modal__container-input_error"></span>
+        <span class="modal__container-input_error" id="modal-name-error"></span>
         <input
           name="link"
-          class="modal__container-description modal__container-input"
-          type="text"
+          class="modal__container-input modal__container-description"
+          id="modal-url"
+          type="url"
           placeholder="Image Link"
+          required
+          autocomplete="off"
         />
-        <span class="modal__container-input_error"></span>
-        <button class="modal__container-button">Save</button>
+        <span class="modal__container-input_error" id="modal-url-error"></span>
+        <button
+          class="modal__container-button modal__container-button_disabled"
+          disabled
+        >
+          Save
+        </button>
       </form>
     </div>
 

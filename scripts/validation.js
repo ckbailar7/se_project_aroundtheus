@@ -1,18 +1,18 @@
 // Enable Validation by calling enableValidation()
 // Pass all the setting on call
 
-function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.add(inputErrorClass);
+  inputEl.classList.add(options.inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classList.add(errorClass);
+  errorMessageEl.classList.add(options.errorClass);
 }
 
-function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+function hideInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.remove(inputErrorClass);
+  inputEl.classList.remove(options.inputErrorClass);
   errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(errorClass);
+  errorMessageEl.classList.remove(options.errorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -27,15 +27,8 @@ const checkFormValidity = (inputs) =>
   inputs.every((input) => input.validity.valid);
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  let foundInvalid = false;
-
-  inputEls.forEach((inputEl) => {
-    if (!inputEl.validity.valid) {
-      foundInvalid = true;
-    }
-  });
-
-  if (!foundInvalid) {
+  const isValid = checkFormValidity(inputEls);
+  if (!isValid) {
     submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
   } else {
@@ -47,7 +40,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(options.submitButtonSelector);
+  const submitButton = formEl.querySelector(".modal__container-button");
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -81,7 +74,7 @@ const config = {
   formSelector: ".modal__container",
   inputSelector: ".modal__container-input",
   submitButtonSelector: ".modal__container-button",
-  inactiveButtonClass: ".modal__container-button_disabled",
+  inactiveButtonClass: "modal__container-button_disabled",
   inputErrorClass: ".modal__container-input_error",
   errorClass: ".modal__container-input_error_visible",
 };

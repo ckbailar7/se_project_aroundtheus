@@ -97,9 +97,11 @@
   color: red;
   transition: opacity 0.3s;
   margin: 0 36px;
+  border-top: 1px solid rgba(227, 8, 8, 0.958);
 }
 
 .modal__container-input_error_visible {
+  opacity: 1;
 }
 
 .modal__container-image-preview {
@@ -120,6 +122,16 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 1.2;
+}
+
+.modal__container-input {
+  margin: 0 36px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  border: none;
 }
 
 .modal__container-name {
@@ -164,6 +176,7 @@
   font-weight: 400;
   line-height: 1.2;
   border-radius: 2px;
+  opacity: 1;
   transition: 0.13s linear;
   cursor: pointer;
 }
@@ -175,9 +188,13 @@
 
 .modal__container-button_disabled {
   border: 1px solid #000000;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   opacity: 0.2;
-  cursor: default;
+  cursor: none;
+}
+
+.modal__container-button_disabled:hover {
 }
 
 .modal__caption {
