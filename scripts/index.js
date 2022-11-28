@@ -136,28 +136,19 @@ const isEscEvent = (evt, action) => {
 };
 
 modalAddPopup.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.contains("modal_opened")
-  ) {
+  if (evt.target.classList.contains("modal")) {
     closeModal(modalAddPopup);
   }
 });
 
 modalTypeEdit.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.contains("modal_opened")
-  ) {
+  if (evt.target.classList.contains("modal")) {
     closeModal(modalTypeEdit);
   }
 });
 
 modalTypePreview.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.contains("modal_opened")
-  ) {
+  if (evt.target.classList.contains("modal")) {
     closeModal(modalTypePreview);
   }
 });

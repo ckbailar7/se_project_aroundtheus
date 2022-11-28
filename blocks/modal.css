@@ -352,6 +352,9 @@
   color: #000;
   border: none;
 }
+#modal-name-error {
+  padding-bottom: 10px;
+}
 .modal__container-name {
   margin: 0 36px 0 36px;
   padding: 0 0 13px 0;
@@ -381,7 +384,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .modal__container-button {
-  margin: 48px 36px 0 36px;
+  margin: 30px 40px 30px 36px;
   background: #000;
   height: 50px;
   text-align: center;
