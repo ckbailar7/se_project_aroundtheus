@@ -125,12 +125,13 @@ function closeModal(modal) {
 
 const handleEscUp = (evt) => {
   evt.preventDefault();
-  isEscEvent(evt, () => closeModal(document.querySelector(".modal_opened")));
+  isEscEvent(evt, closeModal);
 };
 
 const isEscEvent = (evt, action) => {
-  const openModal = document.querySelector("modal_opened");
-  if (evt.which === 27) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector("modal_opened");
+
     action(openModal);
   }
 };
