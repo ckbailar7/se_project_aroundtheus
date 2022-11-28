@@ -47,6 +47,12 @@ function setEventListeners(formEl, options) {
       toggleButtonState(inputEls, submitButton, options);
     });
   });
+  formEl.addEventListener("reset", () => {
+    //set Timeout
+    setTimeout(() => {
+      toggleButtonState(inputEls, submitButton, options);
+    }, 0);
+  });
 }
 
 function enableValidation(options) {

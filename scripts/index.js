@@ -78,7 +78,7 @@ function createCardElement(card) {
   cardImage.alt = card.name;
 
   likeBtn.addEventListener("click", handleLikeIcon);
-  deleteButton.addEventListener("click", handleDeletebtn);
+  deleteButton.addEventListener("click", handleDeleteBtn);
 
   cardImage.addEventListener("click", () => {
     popupImage.src = card.link;
@@ -91,7 +91,7 @@ function createCardElement(card) {
     likeBtn.classList.toggle("card__likebtn-change");
   }
 
-  function handleDeletebtn() {
+  function handleDeleteBtn() {
     cardElement.remove();
   }
 
@@ -132,7 +132,11 @@ const isEscEvent = (evt, action) => {
   if (evt.key === "Escape") {
     const openModal = document.querySelector("modal_opened");
 
-    action(openModal);
+    action(
+      closeModal(modalAddPopup),
+      closeModal(modalTypeEdit),
+      closeModal(modalTypePreview)
+    );
   }
 };
 
