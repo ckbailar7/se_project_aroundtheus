@@ -443,7 +443,7 @@
   }
   .modal__container-name {
     font-size: 14px;
-    margin: 0 22px 30px 22px;
+    margin: 0 22px 0 22px;
   }
   .modal__container-description {
     font-size: 14px;
@@ -452,6 +452,10 @@
   .modal__container-button {
     margin: 45px 22px 0 22px;
     height: 46px;
+  }
+
+  .modal__container-input_error_visible {
+    margin: 0 20px;
   }
 }
 
@@ -491,5 +495,14 @@
   .modal__button {
     top: 120px;
     right: 30px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+}
+
+@media screen and (min-width: 540px) and (max-width: 640px) {
+  .modal {
+    margin: 0 auto;
   }
 }
