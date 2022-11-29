@@ -106,16 +106,22 @@ function renderCard(card, wrapper) {
 /*                         Open/close Universal Functions       */
 /* -------------------------------------------------------------*/
 
+const handleOverlayClose = (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+};
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  // modal.addEventListener("mousedown", handleOverlayClose);
+  modal.addEventListener("mousedown", handleOverlayClose);
   document.addEventListener("keyup", handleEscUp);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 
-  // modal.removeEventListener("mousedown", handleOverlayClose);
+  modal.removeEventListener("mousedown", handleOverlayClose);
   document.removeEventListener("keyup", handleEscUp);
 }
 
@@ -130,62 +136,31 @@ const handleEscUp = (evt) => {
 
 const isEscEvent = (evt, action) => {
   if (evt.key === "Escape") {
-    const openModal = document.querySelector("modal_opened");
+    const openModal = document.querySelector(".modal_opened");
 
-    action(
-      closeModal(modalAddPopup),
-      closeModal(modalTypeEdit),
-      closeModal(modalTypePreview)
-    );
+    action(openModal);
   }
 };
-
-modalAddPopup.addEventListener("mousedown", (evt) => {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(modalAddPopup);
-  }
-});
-
-modalTypeEdit.addEventListener("mousedown", (evt) => {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(modalTypeEdit);
-  }
-});
-
-modalTypePreview.addEventListener("mousedown", (evt) => {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(modalTypePreview);
-  }
-});
-
-//modalAddPopup -- good
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */
 /* -------------------------------------------------------------*/
+
+const closeButtons = document.querySelectorAll(".modal__button");
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(popup));
+});
 
 //Open Modal Popup
 modalButtonOpen.addEventListener("click", () => {
   openModal(profilePopup);
 });
 
-//Close Modal Popup
-modalButtonClose.addEventListener("click", () => {
-  closeModal(profilePopup);
-});
-
-modalButtonImgClose.addEventListener("click", () => {
-  closeModal(imagePreview);
-});
-
 //Open Modal Add Button
 modalAddButtonOpen.addEventListener("click", () => {
   openModal(modalAddPopup);
-});
-
-//Close ModalAdd Button
-modalAddButtonClose.addEventListener("click", () => {
-  closeModal(modalAddPopup);
 });
 
 /* -------------------------------------------------------------*/

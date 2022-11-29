@@ -419,6 +419,28 @@
   font-style: normal;
   color: #ffffff;
 }
+
+@media screen and (max-width: 1400px) {
+  .modal__button {
+    top: 224px;
+    right: 450px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal__button {
+    top: 220px;
+    right: 258px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal__button {
+    top: 225px;
+    right: 130px;
+  }
+}
+
 @media screen and (max-width: 636px) {
   .modal {
     margin-top: -161px;
@@ -459,31 +481,10 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
-  .modal__button {
-    top: 275px;
-    right: 450px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .modal__button {
-    top: 220px;
-    right: 250px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .modal__button {
-    top: 110px;
-    right: 120px;
-  }
-}
-
 @media screen and (max-width: 540px) {
   .modal__button {
-    top: 125px;
-    right: 85px;
+    top: 230px;
+    right: 87px;
   }
 
   .modal {
@@ -491,14 +492,22 @@
   }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (min-width: 400px) and (max-width: 450px) {
   .modal__button {
-    top: 120px;
-    right: 30px;
+    top: 236px;
+    right: 42px;
   }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (min-width: 300px) and (max-width: 399px) {
+  .modal__button {
+    top: 229px;
+    right: 6px;
+  }
+
+  .modal {
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 540px) and (max-width: 640px) {
