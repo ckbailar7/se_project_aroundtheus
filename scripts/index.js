@@ -1,3 +1,6 @@
+// import FormValidator from "./FormValidator.js";
+// import Card from "./Card.js";
+
 //Cards Array
 const initialCards = [
   {
@@ -43,6 +46,7 @@ const modalInputDescription = document.querySelector("#modal-description");
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
+const cardSelector = "#card-template";
 /* -------------------------------------------------------------*/
 /*                        -- Wrappers                             */
 /* -------------------------------------------------------------*/
@@ -79,13 +83,7 @@ function createCardElement(card) {
 
   likeBtn.addEventListener("click", handleLikeIcon);
   deleteButton.addEventListener("click", handleDeleteBtn);
-
-  cardImage.addEventListener("click", () => {
-    popupImage.src = card.link;
-    popupImage.alt = card.name;
-    popupImageTitle.textContent = card.name;
-    openModal(imagePreview);
-  });
+  cardImage.addEventListener("click", handleImagePopup);
 
   function handleLikeIcon() {
     likeBtn.classList.toggle("card__likebtn-change");
@@ -93,6 +91,13 @@ function createCardElement(card) {
 
   function handleDeleteBtn() {
     cardElement.remove();
+  }
+
+  function handleImagePopup() {
+    popupImage.src = card.link;
+    popupImage.alt = card.name;
+    popupImageTitle.textContent = card.name;
+    openModal(imagePreview);
   }
 
   return cardElement;
@@ -162,6 +167,28 @@ modalButtonOpen.addEventListener("click", () => {
 modalAddButtonOpen.addEventListener("click", () => {
   openModal(modalAddPopup);
 });
+
+/* -------------------------------------------------------------*/
+/*                         Validation                           */
+/* -------------------------------------------------------------*/
+// const validationSettings = {
+//   inputSelector: ".modal__container-input",
+//   submitButtonSelector: ".modal__container-button",
+//   inactiveButtonClass: "modal__container-button_disabled",
+//   inputErrorClass: ".modal__container-input_error",
+//   errorClass: "modal__container-input_error_visible",
+// };
+// const editFormElement = profilePopup.querySelector(".modal__container");
+// const addFormElement = modalAddPopup.querySelector(".modal__container");
+
+// const editFormValidator = new FormValidator(
+//   validationSettings,
+//   editFormElement
+// );
+// const addFormValidator = new FormValidator(validationSettings, addFormElement);
+
+// editFormValidator.enableValidation();
+// addFormValidator.enableValidation();
 
 /* -------------------------------------------------------------*/
 /*                         Event Handlers                       */
