@@ -9,7 +9,7 @@ class FormValidator {
     this._errorClass = settings.errorClass;
   }
 
-  showInputError() {
+  _showInputError() {
     const errorMessageEl = this._form.querySelector(
       `#${this._inputSelector.id}-error`
     );
@@ -18,7 +18,7 @@ class FormValidator {
     errorMessageEl.classList.add(this._inputErrorClass);
   }
 
-  hideInputError() {
+  _hideInputError() {
     const errorMessageEl = this._form.querySelector(
       `#${this._inputSelector.id}-error`
     );
@@ -28,10 +28,10 @@ class FormValidator {
   }
 
   _checkInputValidity() {
-    if (!this._inputSelector.validity.valid) {
-      showInputError();
+    if (!this._form.querySelector(this._inputSelector).validity.valid) {
+      this._showInputError();
     } else {
-      hideInputError();
+      this._hideInputError();
     }
   }
 
@@ -49,17 +49,17 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    const inputEls = [...this.form.querySelectorAll(this._inputSelector)];
+    const inputEls = [...this._form.querySelectorAll(this._inputSelector)];
     inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
-        checkInputValidity();
-        toggleButtonState();
+        this._checkInputValidity();
+        this._toggleButtonState();
       });
     });
-    this.form.addEventListener("reset", () => {
+    this._form.addEventListener("reset", () => {
       //set Timeout
       setTimeout(() => {
-        toggleButtonState();
+        this._toggleButtonState();
       }, 0);
     });
   }
@@ -68,8 +68,7 @@ class FormValidator {
     this._form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    _setEventListeners();
+    this._setEventListeners();
   }
 }
-
 export default FormValidator;
