@@ -107,6 +107,7 @@ const modalTypePreview = document.querySelector(".modal_type_preview");
 function renderCard(data, wrapper) {
   const card = new Card(data, wrapper);
   cardWrapper.prepend(card.getView());
+  // console.log(card.getView());
 }
 
 /* -------------------------------------------------------------*/

@@ -3,7 +3,7 @@
 class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
-    this._link = data._link;
+    this._link = data.link;
 
     this._cardSelector = cardSelector;
   }
@@ -60,6 +60,8 @@ class Card {
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
+
+    // console.log(this._name);
     // this._setEventListeners();
 
     return this._element;
