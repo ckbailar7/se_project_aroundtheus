@@ -1,4 +1,4 @@
-import { handleEscUp, isEscEvent, openModal, closeModal } from "./utils.js";
+// import { handleEscUp, isEscEvent, openModal, closeModal } from "./utils.js";
 
 class Card {
   constructor(data, cardSelector) {
@@ -49,7 +49,7 @@ class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector("#card-template")
+      .content.querySelector(".card")
       .cloneNode(true);
 
     return cardElement;
@@ -60,7 +60,7 @@ class Card {
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
-    this._setEventListeners();
+    // this._setEventListeners();
 
     return this._element;
   }
