@@ -1,5 +1,5 @@
 // import FormValidator from "./FormValidator.js";
-
+import { openModal, imagePreview } from "./utils.js";
 import Card from "./Card.js";
 
 //Cards Array
@@ -57,7 +57,6 @@ const popupWrapper = document.querySelector(".modal__container-image-preview");
 /* -------------------------------------------------------------*/
 /*                         -- Image POPUP                          */
 /* -------------------------------------------------------------*/
-const imagePreview = document.querySelector("#image__preview");
 const modalButtonImgClose = imagePreview.querySelector(".modal__button");
 const popupImage = imagePreview.querySelector(".modal__image");
 const popupImageTitle = imagePreview.querySelector(".modal__caption");
@@ -119,41 +118,35 @@ initialCards.forEach((card) => renderCard(card, cardSelector));
 /*                         Open/close Universal Functions       */
 /* -------------------------------------------------------------*/
 
-const handleOverlayClose = (evt) => {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
-  }
-};
+// const handleOverlayClose = (evt) => {
+//   if (evt.target.classList.contains("modal")) {
+//     closeModal(evt.target);
+//   }
+// };
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  modal.addEventListener("mousedown", handleOverlayClose);
-  document.addEventListener("keyup", handleEscUp);
-}
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-
-  modal.removeEventListener("mousedown", handleOverlayClose);
-  document.removeEventListener("keyup", handleEscUp);
-}
+//   modal.removeEventListener("mousedown", handleOverlayClose);
+//   document.removeEventListener("keyup", handleEscUp);
+// }
 
 /* -------------------------------------------------------------*/
 /*                         -- Esc key start                     */
 /* -------------------------------------------------------------*/
 
-const handleEscUp = (evt) => {
-  evt.preventDefault();
-  isEscEvent(evt, closeModal);
-};
+// const handleEscUp = (evt) => {
+//   evt.preventDefault();
+//   isEscEvent(evt, closeModal);
+// };
 
-const isEscEvent = (evt, action) => {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
+// const isEscEvent = (evt, action) => {
+//   if (evt.key === "Escape") {
+//     const openModal = document.querySelector(".modal_opened");
 
-    action(openModal);
-  }
-};
+//     action(openModal);
+//   }
+// };
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */
@@ -167,14 +160,14 @@ closeButtons.forEach((button) => {
 });
 
 //Open Modal Popup
-modalButtonOpen.addEventListener("click", () => {
-  openModal(profilePopup);
-});
+// modalButtonOpen.addEventListener("click", () => {
+//   openModal(profilePopup);
+// });
 
 //Open Modal Add Button
-modalAddButtonOpen.addEventListener("click", () => {
-  openModal(modalAddPopup);
-});
+// modalAddButtonOpen.addEventListener("click", () => {
+//   openModal(modalAddPopup);
+// });
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */

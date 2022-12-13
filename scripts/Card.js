@@ -1,4 +1,4 @@
-// import { handleEscUp, isEscEvent, openModal, closeModal } from "./utils.js";
+import { openModal, imagePreview } from "./utils.js";
 
 class Card {
   constructor(data, cardSelector) {
@@ -35,15 +35,21 @@ class Card {
     // Like Btn Listener
     this._element
       .querySelector(".card__likebtn")
-      .addEventListener("click", this._handleLikeIcon());
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
     // Delete Button Listener
     this._element
       .querySelector(".card__deletebtn")
-      .addEventListener("click", this._handleDeleteBtn());
+      .addEventListener("click", () => {
+        this._handleDeleteBtn();
+      });
     //Image Click Popup Listener
     this._element
       .querySelector(".card__image")
-      .addEventListener("click", this._handleImagePopup());
+      .addEventListener("click", () => {
+        this._handleImagePopup();
+      });
   }
 
   _getTemplate() {
@@ -62,7 +68,7 @@ class Card {
     this._element.querySelector(".card__image").alt = this._name;
 
     // console.log(this._name);
-    // this._setEventListeners();
+    this._setEventListeners();
 
     return this._element;
   }
