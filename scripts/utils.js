@@ -20,12 +20,12 @@ export function handleOverlayClose(evt) {
 }
 
 //close Button
-export const closeButtons = document.querySelectorAll(".modal__button");
+// export const closeButtons = document.querySelectorAll(".modal__button");
 
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(popup));
-});
+// closeButtons.forEach((button) => {
+//   const popup = button.closest(".modal");
+//   button.addEventListener("click", () => closeModal(popup));
+// });
 
 // Open Modal
 export function openModal(modalWindow) {
