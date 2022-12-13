@@ -1,5 +1,8 @@
+//Esc functions
 export function isEscEvent(evt, action) {
   if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+
     action(openModal);
   }
 }
@@ -9,6 +12,7 @@ export function handleEscUp(evt) {
   isEscEvent(evt, closeModal);
 }
 
+// Overlay Function
 export function handleOverlayClose(evt) {
   if (evt.target.classList.contains("modal")) {
     closeModal(evt.target);
