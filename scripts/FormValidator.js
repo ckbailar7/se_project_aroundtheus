@@ -15,7 +15,7 @@ class FormValidator {
     );
     this._inputSelector.classList.add(this._inputErrorClass);
     errorMessageEl.textContent = this._inputSelector.validationMessage;
-    errorMessageEl.classList.add(this._inputErrorClass);
+    errorMessageEl.classList.add(this._errorClass);
   }
 
   _hideInputError() {
@@ -24,7 +24,7 @@ class FormValidator {
     );
     this._inputSelector.classList.remove(this._inputErrorClass);
     errorMessageEl.textContent = "";
-    errorMessageEl.classList.remove(this._inputErrorClass);
+    errorMessageEl.classList.remove(this._errorClass);
   }
 
   _checkInputValidity() {
@@ -40,11 +40,11 @@ class FormValidator {
   _toggleButtonState() {
     const isValid = checkFormValidity(this._inputSelector);
     if (!isValid) {
-      this._submitButton.classList.add(this._inactiveButtonClass);
-      this._submitButton.disabled = true;
+      this._submitButtonSelector.classList.add(this._inactiveButtonClass);
+      this._submitButtonSelector.disabled = true;
     } else {
-      this._submitButton.classList.remove(this._inactiveButtonClass);
-      this._submitButton.disabled = false;
+      this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
+      this._submitButtonSelector.disabled = false;
     }
   }
 

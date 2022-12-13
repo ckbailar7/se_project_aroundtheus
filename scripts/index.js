@@ -178,24 +178,24 @@ modalAddButtonOpen.addEventListener("click", () => {
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
 /* -------------------------------------------------------------*/
-// const validationSettings = {
-//   inputSelector: ".modal__container-input",
-//   submitButtonSelector: ".modal__container-button",
-//   inactiveButtonClass: "modal__container-button_disabled",
-//   inputErrorClass: ".modal__container-input_error",
-//   errorClass: "modal__container-input_error_visible",
-// };
-// const editFormElement = profilePopup.querySelector(".modal__container");
-// const addFormElement = modalAddPopup.querySelector(".modal__container");
+const validationSettings = {
+  inputSelector: ".modal__container-input",
+  submitButtonSelector: ".modal__container-button",
+  inactiveButtonClass: "modal__container-button_disabled",
+  inputErrorClass: ".modal__container-input_error",
+  errorClass: "modal__container-input_error_visible",
+};
+const editFormElement = profilePopup.querySelector(".modal__container");
+const addFormElement = modalAddPopup.querySelector(".modal__container");
 
-// const editFormValidator = new FormValidator(
-//   validationSettings,
-//   editFormElement
-// );
-// const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
-// editFormValidator.enableValidation();
-// addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 /* -------------------------------------------------------------*/
 /*                         Event Handlers                       */
