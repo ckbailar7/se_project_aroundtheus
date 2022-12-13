@@ -1,5 +1,11 @@
-// import FormValidator from "./FormValidator.js";
-import { openModal, imagePreview } from "./utils.js";
+import FormValidator from "./FormValidator.js";
+import {
+  openModal,
+  imagePreview,
+  closeModal,
+  handleEscUp,
+  isEscEvent,
+} from "./utils.js";
 import Card from "./Card.js";
 
 //Cards Array
@@ -152,22 +158,22 @@ initialCards.forEach((card) => renderCard(card, cardSelector));
 /*                         User Inputs                          */
 /* -------------------------------------------------------------*/
 
-const closeButtons = document.querySelectorAll(".modal__button");
+// const closeButtons = document.querySelectorAll(".modal__button");
 
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(popup));
-});
+// closeButtons.forEach((button) => {
+//   const popup = button.closest(".modal");
+//   button.addEventListener("click", () => closeModal(popup));
+// });
 
 //Open Modal Popup
-// modalButtonOpen.addEventListener("click", () => {
-//   openModal(profilePopup);
-// });
+modalButtonOpen.addEventListener("click", () => {
+  openModal(profilePopup);
+});
 
 //Open Modal Add Button
-// modalAddButtonOpen.addEventListener("click", () => {
-//   openModal(modalAddPopup);
-// });
+modalAddButtonOpen.addEventListener("click", () => {
+  openModal(modalAddPopup);
+});
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */

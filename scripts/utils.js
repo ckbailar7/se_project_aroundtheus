@@ -1,6 +1,6 @@
 export function isEscEvent(evt, action) {
   if (evt.key === "Escape") {
-    action(evt, openModal);
+    action(openModal);
   }
 }
 
@@ -15,6 +15,7 @@ export function handleOverlayClose(evt) {
   }
 }
 
+//close Button
 export const closeButtons = document.querySelectorAll(".modal__button");
 
 closeButtons.forEach((button) => {
