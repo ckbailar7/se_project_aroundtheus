@@ -223,7 +223,7 @@ modalAddEditForm.addEventListener("submit", (event) => {
       name: modalAddnameValue,
       link: modalAddLinkValue,
     },
-    cardWrapper
+    cardSelector
   );
   closeModal(modalAddPopup);
 

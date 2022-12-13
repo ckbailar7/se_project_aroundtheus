@@ -24,14 +24,16 @@ class FormValidator {
   }
 
   _checkInputValidity(inputEl) {
-    if (!this._form.querySelector(this._inputSelector).validity.valid) {
+    if (!inputEl.validity.valid) {
       this._showInputError(inputEl);
     } else {
       this._hideInputError(inputEl);
     }
   }
 
-  _checkFormValidity = (inputEl) => inputEl.validity.valid;
+  _checkFormValidity = () => {
+    return this._inputEls.every((input) => input.validity.valid);
+  };
 
   _toggleButtonState(inputEl) {
     const isValid = this._checkFormValidity(inputEl);
@@ -45,9 +47,9 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    const inputEls = [...this._form.querySelectorAll(this._inputSelector)];
+    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-    inputEls.forEach((inputEl) => {
+    this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(inputEl);
         this._toggleButtonState(inputEl);
