@@ -1,19 +1,7 @@
 import "../pages/index.css";
 import FormValidator from "../components/FormValidator.js";
-// import {
-//   initialCards,
-//   selectors,
-//   validationSettings,
-// } from "./utils/constants.js";
-
 import { initialCards, validationSettings } from "../utils/constants.js";
-import {
-  openModal,
-  imagePreview,
-  closeModal,
-  handleEscUp,
-  isEscEvent,
-} from "../utils/utils.js";
+import { openModal, closeModal } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
@@ -38,8 +26,49 @@ const modalInputDescription = document.querySelector("#modal-description");
 const cardSelector = "#card-template";
 const cardWrapper = document.querySelector(".cards");
 
+/* -------------------------------------------------------------*/
+/*                         Importing / constants above          */
+/* -------------------------------------------------------------*/
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+// Setting initial input values for profileEditForm
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
+
 /* -------------------------------------------------------------*/
 /*                         Calling rendered card                */
 /* -------------------------------------------------------------*/
@@ -49,9 +78,16 @@ function renderCard(data, wrapper) {
   cardWrapper.prepend(card.getView());
 }
 
+// iterate over each element in the initialCards array and call the function renderCard
 initialCards.forEach((card) => renderCard(card, cardSelector));
 
-const sectionCard = new Section({ initialCards });
+//unsure
+const sectionCard = new Section({
+  items: initialCards,
+  renderer: (data) => {
+    renderItems(data);
+  },
+});
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */
