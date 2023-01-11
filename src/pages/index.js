@@ -84,10 +84,12 @@ initialCards.forEach((card) => renderCard(card, cardSelector));
 //unsure
 const sectionCard = new Section({
   items: initialCards,
-  renderer: (data) => {
-    renderItems(data);
-  },
+
+  renderer: (data) => {},
+  cardSelector,
 });
+
+//sectionCard.renderItems();
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */

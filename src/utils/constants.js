@@ -32,3 +32,7 @@ export const validationSettings = {
   inputErrorClass: ".modal__container-input_error",
   errorClass: "modal__container-input_error_visible",
 };
+
+export const selectors = {
+  imagePreview: "#image__preview",
+};
