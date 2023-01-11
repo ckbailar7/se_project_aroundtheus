@@ -11,7 +11,7 @@ export default class PopupWithImage extends Popup {
   openModal({ link, name }) {
     this._cardPreviewImage.src = link;
     this._cardPreviewImage.alt = name;
-    this._cardImageTitle.textContent = name;
+    this._cardPreviewTitle.textContent = name;
 
     super.openModal();
   }

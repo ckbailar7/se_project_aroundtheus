@@ -1,6 +1,10 @@
 import "../pages/index.css";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards, validationSettings } from "../utils/constants.js";
+import {
+  initialCards,
+  validationSettings,
+  selectors,
+} from "../utils/constants.js";
 import { openModal, closeModal } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
@@ -73,23 +77,27 @@ modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 /*                         Calling rendered card                */
 /* -------------------------------------------------------------*/
 
-function renderCard(data, wrapper) {
-  const card = new Card(data, wrapper);
-  cardWrapper.prepend(card.getView());
-}
+// function renderCard(data, wrapper) {
+//   const card = new Card(data, wrapper);
+//   cardWrapper.prepend(card.getView());
+// }
 
 // iterate over each element in the initialCards array and call the function renderCard
-initialCards.forEach((card) => renderCard(card, cardSelector));
+// initialCards.forEach((card) => renderCard(card, cardSelector));
 
-//unsure
+//CHECK
 const sectionCard = new Section({
   items: initialCards,
 
-  renderer: (data) => {},
+  renderer: (data) => {
+    const card = new Card(data, cardSelector);
+    cardWrapper.prepend(card.getView());
+  },
+
   cardSelector,
 });
 
-//sectionCard.renderItems();
+sectionCard.renderItems();
 
 /* -------------------------------------------------------------*/
 /*                         User Inputs                          */
@@ -112,6 +120,35 @@ modalButtonOpen.addEventListener("click", () => {
 modalAddButtonOpen.addEventListener("click", () => {
   openModal(modalAddPopup);
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
@@ -134,6 +171,17 @@ addFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 
 //Edit Modal Form inputs with close on submit but does not refresh page
+
+const imagePopup1 = new PopupWithImage(selectors.imagePreview);
+
+// 1.
+// imagePopup1.openModal
+
+// 2.
+// imagePopup1.addEventListener("click", openModal);
+
+//  is everything set up and I just need to call the necesarry functions , This Popup with Image class has one function - to handle the clicking and overlay functions when clicking an image - I know its set up in Popup.js but its original placement was in Card.js, I guess my question is do I have to create another Card instance within the new PopupWithImage instance? I know we went over using new Card instances but I feel a little stuck.
+
 modalEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const nameValue = event.target.name.value;
