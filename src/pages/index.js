@@ -31,56 +31,16 @@ const cardSelector = "#card-template";
 const cardWrapper = document.querySelector(".cards");
 
 /* -------------------------------------------------------------*/
-/*                         Importing / constants above          */
+/*       Setting initial input values for profileEditForm       */
 /* -------------------------------------------------------------*/
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-// Setting initial input values for profileEditForm
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
-/* -------------------------------------------------------------*/
-/*                         Calling rendered card                */
-/* -------------------------------------------------------------*/
-
-// function renderCard(data, wrapper) {
-//   const card = new Card(data, wrapper);
-//   cardWrapper.prepend(card.getView());
-// }
+function renderCard(data, wrapper) {
+  const card = new Card(data, wrapper);
+  cardWrapper.prepend(card.getView());
+}
 
 // iterate over each element in the initialCards array and call the function renderCard
 // initialCards.forEach((card) => renderCard(card, cardSelector));
@@ -99,12 +59,11 @@ const sectionCard = new Section({
 
 sectionCard.renderItems();
 
-/* -------------------------------------------------------------*/
-/*                         User Inputs                          */
-/* -------------------------------------------------------------*/
-
 //close Button
 export const closeButtons = document.querySelectorAll(".modal__button");
+/* -------------------------------------------------------------*/
+/*  Click functionality for closebtn / opening btns for forms   */
+/* -------------------------------------------------------------*/
 
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
@@ -120,35 +79,6 @@ modalButtonOpen.addEventListener("click", () => {
 modalAddButtonOpen.addEventListener("click", () => {
   openModal(modalAddPopup);
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
@@ -166,12 +96,6 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-/* -------------------------------------------------------------*/
-/*                         Event Handlers                       */
-/* -------------------------------------------------------------*/
-
-//Edit Modal Form inputs with close on submit but does not refresh page
-
 const imagePopup1 = new PopupWithImage(selectors.imagePreview);
 
 // 1.
@@ -182,6 +106,9 @@ const imagePopup1 = new PopupWithImage(selectors.imagePreview);
 
 //  is everything set up and I just need to call the necesarry functions , This Popup with Image class has one function - to handle the clicking and overlay functions when clicking an image - I know its set up in Popup.js but its original placement was in Card.js, I guess my question is do I have to create another Card instance within the new PopupWithImage instance? I know we went over using new Card instances but I feel a little stuck.
 
+/* -------------------------------------------------------------*/
+/*                         Event Handlers for Submit            */
+/* -------------------------------------------------------------*/
 modalEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const nameValue = event.target.name.value;
@@ -205,6 +132,7 @@ modalAddEditForm.addEventListener("submit", (event) => {
     },
     cardSelector
   );
+
   closeModal(modalAddPopup);
 
   event.target.reset();

@@ -1,4 +1,5 @@
 import { openModal, imagePreview } from "../utils/utils.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 class Card {
   constructor(data, cardSelector) {
@@ -19,16 +20,19 @@ class Card {
     this._element.remove();
   }
   _handleImagePopup() {
-    document
-      .querySelector("#image__preview")
-      .querySelector(".modal__image").src = this._link;
-    document
-      .querySelector("#image__preview")
-      .querySelector(".modal__image").alt = this._name;
-    document
-      .querySelector("#image__preview")
-      .querySelector(".modal__caption").textContent = this._name;
-    openModal(imagePreview);
+    // document
+    //   .querySelector("#image__preview")
+    //   .querySelector(".modal__image").src = this._link;
+    // document
+    //   .querySelector("#image__preview")
+    //   .querySelector(".modal__image").alt = this._name;
+    // document
+    //   .querySelector("#image__preview")
+    //   .querySelector(".modal__caption").textContent = this._name;
+    // openModal(imagePreview);
+
+    const newImagePopup = new PopupWithImage(imagePreview);
+    newImagePopup.openModal;
   }
 
   // Setting Event Listeners
@@ -68,7 +72,6 @@ class Card {
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
 
-    // console.log(this._name);
     this._setEventListeners();
 
     return this._element;
