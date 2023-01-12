@@ -38,6 +38,7 @@ modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
 const previewPopup = new PopupWithImage(selectors.imagePreview);
+previewPopup.setEventListeners();
 
 function renderCard(data) {
   const card = new Card(data, cardSelector, (data) => {
@@ -105,16 +106,6 @@ addFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 /*                         Event Handlers for Submit            */
 /* -------------------------------------------------------------*/
-modalEditForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const nameValue = event.target.name.value;
-  const descriptionValue = event.target.description.value;
-
-  profileNameElement.textContent = nameValue;
-  profileDescriptionElement.textContent = descriptionValue;
-
-  closeModal(profilePopup);
-});
 
 modalAddEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -134,4 +125,16 @@ modalAddEditForm.addEventListener("submit", (event) => {
   event.target.reset();
 });
 
-// const profileUpdateForm = new PopupupWithForm(".modal_type_edit");
+/* -------------------------------------------------------------*/
+/*        New Instances of PopupWithForm                        */
+/* -------------------------------------------------------------*/
+
+const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
+  profileNameElement.textContent = data.name;
+  profileDescriptionElement.textContent = data.description;
+  profileUpdateForm.closeModal();
+});
+
+profileUpdateForm.setEventListeners();
+
+// const addCardForm = new PopupupWithForm();
