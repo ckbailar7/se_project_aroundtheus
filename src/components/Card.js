@@ -2,12 +2,14 @@ import { openModal, imagePreview } from "../utils/utils.js";
 import PopupWithImage from "./PopupWithImage.js";
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
 
     this._imagePreview = cardSelector.imagePreview;
+
+    this._handleCardClick = handleCardClick;
   }
 
   // Handlers
@@ -31,8 +33,10 @@ class Card {
     //   .querySelector(".modal__caption").textContent = this._name;
     // openModal(imagePreview);
 
-    const newImagePopup = new PopupWithImage(imagePreview);
-    newImagePopup.openModal;
+    // const newImagePopup = new PopupWithImage(imagePreview);
+    // newImagePopup.openModal;
+
+    this._handleCardClick({ name: this._name, link: this._link });
   }
 
   // Setting Event Listeners

@@ -37,25 +37,31 @@ const cardWrapper = document.querySelector(".cards");
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
-function renderCard(data, wrapper) {
-  const card = new Card(data, wrapper);
-  cardWrapper.prepend(card.getView());
+const previewPopup = new PopupWithImage(selectors.imagePreview);
+
+function renderCard(data) {
+  const card = new Card(data, cardSelector, (data) => {
+    previewPopup.openModal(data);
+  });
+  return card.getView();
 }
 
 // iterate over each element in the initialCards array and call the function renderCard
 // initialCards.forEach((card) => renderCard(card, cardSelector));
 
 //CHECK
-const sectionCard = new Section({
-  items: initialCards,
+const sectionCard = new Section(
+  {
+    items: initialCards,
 
-  renderer: (data) => {
-    const card = new Card(data, cardSelector);
-    cardWrapper.prepend(card.getView());
+    renderer: (data) => {
+      const card = new renderCard(data);
+      sectionCard.addItem(card);
+    },
   },
 
-  cardSelector,
-});
+  ".cards"
+);
 
 sectionCard.renderItems();
 
@@ -95,8 +101,6 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-const imagePopup1 = new PopupWithImage(selectors.imagePreview);
 
 // 1.
 // imagePopup1.openModal

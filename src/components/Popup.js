@@ -6,12 +6,12 @@ export default class Popup {
   }
 
   openModal() {
-    this._popupElement.classList.add("modal__opened");
+    this._popupElement.classList.add("modal_opened");
     document.addEventListener("keyup", this._handleEscClose);
   }
 
   closeModal() {
-    this._popupElement.classList.remove("modal__opened");
+    this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
