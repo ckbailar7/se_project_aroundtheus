@@ -15,13 +15,13 @@ export default class Popup {
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
-  _handleOverlayClose(event) {
-    if (event.target.classList.contains("modal")) {
-      this.closeModal();
+  _handleOverlayClose(evt) {
+    if (evt.target.classList.contains("modal")) {
+      this.closeModal(this);
     }
   }
 
-  _handleEscClose() {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.closeModal();
     }
@@ -32,6 +32,10 @@ export default class Popup {
     this._popupElement.addEventListener(
       "mousedown",
       this._handleOverlayClose.bind(this)
+    );
+    this._popupElement.addEventListener(
+      "mousedown",
+      this._handleEscClose.bind(this)
     );
   }
 }

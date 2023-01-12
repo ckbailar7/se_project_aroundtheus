@@ -12,5 +12,7 @@ export default class PopupWithImage extends Popup {
     this._popupElement.querySelector(".modal__caption").textContent = name;
 
     super.openModal();
+    super._handleEscClose;
+    super._handleOverlayClose;
   }
 }

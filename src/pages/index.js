@@ -102,14 +102,6 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-// 1.
-// imagePopup1.openModal
-
-// 2.
-// imagePopup1.addEventListener("click", openModal);
-
-//  is everything set up and I just need to call the necesarry functions , This Popup with Image class has one function - to handle the clicking and overlay functions when clicking an image - I know its set up in Popup.js but its original placement was in Card.js, I guess my question is do I have to create another Card instance within the new PopupWithImage instance? I know we went over using new Card instances but I feel a little stuck.
-
 /* -------------------------------------------------------------*/
 /*                         Event Handlers for Submit            */
 /* -------------------------------------------------------------*/
@@ -141,3 +133,5 @@ modalAddEditForm.addEventListener("submit", (event) => {
 
   event.target.reset();
 });
+
+// const profileUpdateForm = new PopupupWithForm(".modal_type_edit");
