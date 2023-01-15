@@ -5,6 +5,7 @@ import {
   validationSettings,
   selectors,
   profileSelectors,
+  modalSelectors,
 } from "../utils/constants.js";
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
@@ -15,21 +16,9 @@ import PopupWithForm from "../components/PopupWithForm.js";
 /* -------------------------------------------------------------*/
 /*                         Selectors                            */
 /* -------------------------------------------------------------*/
-
-const profilePopup = document.querySelector(".modal");
-const modalAddPopup = document.querySelector(".modal_type_add");
-
-const modalButtonOpen = document.querySelector(".profile__title-button");
-const profileNameElement = document.querySelector(".profile__title");
-const profileDescriptionElement = document.querySelector(".profile__subtitle");
-const modalAddButtonOpen = document.querySelector(".profile__button");
-const modalInput = document.querySelector("#modal-name");
-const modalInputDescription = document.querySelector("#modal-description");
 const cardSelector = "#card-template";
 
 // Unused form selectors --- Selecting just form nothing else
-const modalEditForm = document.querySelector("#edit-modal-form");
-const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
 
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
@@ -66,21 +55,23 @@ const sectionCard = new Section(
 sectionCard.renderItems();
 
 //Open Modal Popup
-modalButtonOpen.addEventListener("click", () => {
-  profileUpdateForm.openModal(profilePopup);
+modalSelectors.modalButtonOpen.addEventListener("click", () => {
+  profileUpdateForm.openModal();
 });
 
 //Open Modal Add Button
-modalAddButtonOpen.addEventListener("click", () => {
-  formSubmit2.openModal(modalAddPopup);
+modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
+  formSubmit2.openModal();
 });
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
 /* -------------------------------------------------------------*/
 
-const editFormElement = profilePopup.querySelector(".modal__container");
-const addFormElement = modalAddPopup.querySelector(".modal__container");
+const editFormElement =
+  modalSelectors.modalContainer.querySelector(".modal__container");
+const addFormElement =
+  modalSelectors.modalAddPopup.querySelector(".modal__container");
 
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -120,8 +111,8 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
 profileUpdateForm.setEventListeners();
 
 const userInfoCl = new UserInfo(
-  profileSelectors.profileNameElement,
-  profileSelectors.profileDescriptionElement
+  selectors.profNameElementIdSelector,
+  selectors.profDescriptionElementIdSelector
 );
 
 userInfoCl.setUserInfo;
@@ -129,5 +120,7 @@ userInfoCl.setUserInfo;
 /* -------------------------------------------------------------*/
 /*       Setting initial input values for profileEditForm       */
 /* -------------------------------------------------------------*/
-modalInput.defaultValue = profileNameElement.textContent;
-modalInputDescription.defaultValue = profileDescriptionElement.textContent;
+modalSelectors.modalNameInput.defaultValue =
+  profileSelectors.profileNameElement.textContent;
+modalSelectors.modalDescriptionInput.defaultValue =
+  profileSelectors.profileDescriptionElement.textContent;

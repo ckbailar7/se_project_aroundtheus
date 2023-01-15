@@ -36,13 +36,21 @@ export const validationSettings = {
 export const selectors = {
   imagePreview: "#image__preview",
   cardWrapper: ".cards",
+  profNameElementIdSelector: ".profile__title",
+  profDescriptionElementIdSelector: ".profile__subtitle",
 };
 
-const modalSelectors = {
-  modalNameInput: "#modal-name",
+export const modalSelectors = {
+  modalNameInput: document.querySelector("#modal-name"),
+  modalDescriptionInput: document.querySelector("#modal-description"),
+  modalContainer: document.querySelector(".modal"),
+  modalAddPopup: document.querySelector(".modal_type_add"),
+  modalButtonOpen: document.querySelector(".profile__title-button"),
+  modalAddButtonOpen: document.querySelector(".profile__button"),
 };
 
 export const profileSelectors = {
-  profileNameElement: ".profile__title",
-  profileDescriptionElement: ".profile__subtitle",
+  profileDescriptionElement: document.querySelector(".profile__subtitle"),
+
+  profileNameElement: document.querySelector(".profile__title"),
 };
