@@ -4,10 +4,11 @@ import {
   initialCards,
   validationSettings,
   selectors,
+  profileSelectors,
 } from "../utils/constants.js";
 import { openModal, closeModal } from "../utils/utils.js";
 import Card from "../components/Card.js";
-// import UserInfo from "../components/UserInfo.js";
+import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupupWithForm from "../components/PopupWithForm.js";
@@ -113,15 +114,6 @@ addFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
 /* -------------------------------------------------------------*/
-//Popup Edit Form
-const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
-  // Change From Vanilla JS to using userInfo instance
-  profileNameElement.textContent = data.name;
-  profileDescriptionElement.textContent = data.description;
-  profileUpdateForm.closeModal();
-});
-profileUpdateForm.setEventListeners();
-
 /* -------------------------------------------------------------*/
 /*      New Instance creating a card on submit using            */
 /*               new PopupWithForm instance                     */
@@ -136,3 +128,17 @@ const formSubmit2 = new PopupupWithForm(".modal_type_add", (data) => {
   formSubmit2.closeModal();
 });
 formSubmit2.setEventListeners();
+
+//Popup Edit Form
+const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
+  profileUpdateForm.closeModal();
+  userInfoCl.setUserInfo(data.name, data.description);
+});
+profileUpdateForm.setEventListeners();
+
+const userInfoCl = new UserInfo(
+  profileSelectors.profileNameElement,
+  profileSelectors.profileDescriptionElement
+);
+
+userInfoCl.setUserInfo;

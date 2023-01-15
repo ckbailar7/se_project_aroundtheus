@@ -42,6 +42,7 @@ const modalSelectors = {
   modalNameInput: "#modal-name",
 };
 
-const profileSelectors = {
+export const profileSelectors = {
   profileNameElement: ".profile__title",
+  profileDescriptionElement: ".profile__subtitle",
 };
