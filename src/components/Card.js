@@ -1,6 +1,3 @@
-import { openModal, imagePreview } from "../utils/utils.js";
-import PopupWithImage from "./PopupWithImage.js";
-
 class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
@@ -32,9 +29,6 @@ class Card {
     //   .querySelector("#image__preview")
     //   .querySelector(".modal__caption").textContent = this._name;
     // openModal(imagePreview);
-
-    // const newImagePopup = new PopupWithImage(imagePreview);
-    // newImagePopup.openModal;
 
     this._handleCardClick({ name: this._name, link: this._link });
   }

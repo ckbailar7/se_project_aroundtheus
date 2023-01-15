@@ -26,20 +26,23 @@ const profileDescriptionElement = document.querySelector(".profile__subtitle");
 const modalAddButtonOpen = document.querySelector(".profile__button");
 const modalInput = document.querySelector("#modal-name");
 const modalInputDescription = document.querySelector("#modal-description");
-
 const cardSelector = "#card-template";
 const cardWrapper = document.querySelector(".cards");
-
 /* -------------------------------------------------------------*/
 /*       Setting initial input values for profileEditForm       */
 /* -------------------------------------------------------------*/
-
 modalInput.defaultValue = profileNameElement.textContent;
 modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
+/* -------------------------------------------------------------*/
+/*                    PopupWithImage Instance                   */
+/* -------------------------------------------------------------*/
 const previewPopup = new PopupWithImage(selectors.imagePreview);
 previewPopup.setEventListeners();
 
+/* -------------------------------------------------------------*/
+/*                    Render Cards                              */
+/* -------------------------------------------------------------*/
 function renderCard(data) {
   const card = new Card(data, cardSelector, (data) => {
     previewPopup.openModal(data);
@@ -104,32 +107,15 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 /* -------------------------------------------------------------*/
-/*                         Event Handlers for Submit            */
-/* -------------------------------------------------------------*/
-
-modalAddEditForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const modalAddnameValue = event.target.name.value;
-  const modalAddLinkValue = event.target.link.value;
-
-  renderCard(
-    {
-      name: modalAddnameValue,
-      link: modalAddLinkValue,
-    },
-    cardSelector
-  );
-
-  closeModal(modalAddPopup);
-
-  event.target.reset();
-});
-
-/* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
 /* -------------------------------------------------------------*/
 
+//Popup Edit Form
 const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
+  // const profileUpdateSubmitCl = new UserInfo(data.name, data.description);
+
+  // profileUpdateSubmitCl.getUserInfo();
+  // profileUpdateSubmitCl.setUserInfo();
   profileNameElement.textContent = data.name;
   profileDescriptionElement.textContent = data.description;
   profileUpdateForm.closeModal();
@@ -137,4 +123,65 @@ const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
 
 profileUpdateForm.setEventListeners();
 
-// const addCardForm = new PopupupWithForm();
+/* -------------------------------------------------------------*/
+/*        New Instance creating a card on submit                */
+/* -------------------------------------------------------------*/
+
+const formSubmit2 = new PopupupWithForm(".modal_type_add", (data) => {
+  const newUserCreatedCard = new Card(data, cardSelector, (data) => {
+    previewPopup.openModal(data);
+    newUserCreatedCard.getView();
+  });
+
+  sectionCard.addItem(newUserCreatedCard);
+});
+formSubmit2.setEventListeners();
+
+//
+// const addCardForm = new PopupupWithForm("#edit-modalAdd-form", (data) => {
+//   const transferValuesAdd = new UserInfo();
+// });
+
+// addCardForm.setEventListeners();
+
+// const card = new Card(data, cardSelector, (data) => {
+//   previewPopup.openModal(data);
+// });
+// return card.getView();
+
+// const renderCard(
+//   {
+//     name: data.name.value,
+//     link: data.description.value,
+//   },
+//   cardSelector
+// );
+// addCardForm.closeModal();
+
+// const newAddedCard = new Card(data, cardSelector, (data) => {
+//   previewPopup.openModal(data);
+// });
+
+// newAddedCard.getView();
+
+/* -------------------------------------------------------------*/
+/*                         Event Handlers for Submit            */
+/* -------------------------------------------------------------*/
+
+// modalAddEditForm.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const modalAddnameValue = event.target.name.value;
+//   const modalAddLinkValue = event.target.link.value;
+
+//   renderCard(
+//     {
+//       name: modalAddnameValue,
+//       link: modalAddLinkValue,
+//     },
+//     cardSelector
+//   );
+
+//   closeModal(modalAddPopup);
+
+//   event.target.reset();
+// });

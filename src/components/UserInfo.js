@@ -13,8 +13,8 @@ export default class UserInfo {
 
   getUserInfo() {
     return {
-      name: this._profileNameElement.textContent,
-      description: this._profileDescriptionSelector.textContent,
+      name: this._profileNameElement.textContent.value,
+      description: this._profileDescriptionSelector.textContent.value,
     };
   }
 }

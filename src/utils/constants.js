@@ -36,3 +36,11 @@ export const validationSettings = {
 export const selectors = {
   imagePreview: "#image__preview",
 };
+
+const modalSelectors = {
+  modalNameInput: "#modal-name",
+};
+
+const profileSelectors = {
+  profileNameElement: ".profile__title",
+};
