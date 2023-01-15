@@ -131,7 +131,7 @@ const formSubmit2 = new PopupupWithForm(".modal_type_add", (data) => {
     previewPopup.openModal(data);
     newUserCreatedCard.getView();
   });
-  sectionCard.addItem(newUserCreatedCard);
+  sectionCard.addItem(newUserCreatedCard.getView());
   closeModal(modalAddPopup);
 });
 formSubmit2.setEventListeners();
