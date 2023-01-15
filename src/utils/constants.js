@@ -38,6 +38,7 @@ export const selectors = {
   cardWrapper: ".cards",
   profNameElementIdSelector: ".profile__title",
   profDescriptionElementIdSelector: ".profile__subtitle",
+  cardSelector: "#card-template",
 };
 
 export const modalSelectors = {

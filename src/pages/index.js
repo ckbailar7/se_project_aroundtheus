@@ -16,9 +16,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 /* -------------------------------------------------------------*/
 /*                         Selectors                            */
 /* -------------------------------------------------------------*/
-const cardSelector = "#card-template";
-
-// Unused form selectors --- Selecting just form nothing else
 
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
@@ -30,7 +27,7 @@ previewPopup.setEventListeners();
 /*                    Render Cards                              */
 /* -------------------------------------------------------------*/
 function renderCard(data) {
-  const card = new Card(data, cardSelector, (data) => {
+  const card = new Card(data, selectors.cardSelector, (data) => {
     previewPopup.openModal(data);
   });
   return card.getView();
@@ -91,7 +88,7 @@ addFormValidator.enableValidation();
 /*      Instance for popup ADD form                             */
 /* -------------------------------------------------------------*/
 const formSubmit2 = new PopupWithForm(".modal_type_add", (data) => {
-  const newUserCreatedCard = new Card(data, cardSelector, (data) => {
+  const newUserCreatedCard = new Card(data, selectors.cardSelector, (data) => {
     previewPopup.openModal(data);
     newUserCreatedCard.getView();
   });
