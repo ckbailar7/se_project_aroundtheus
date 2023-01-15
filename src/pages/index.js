@@ -7,7 +7,7 @@ import {
 } from "../utils/constants.js";
 import { openModal, closeModal } from "../utils/utils.js";
 import Card from "../components/Card.js";
-import UserInfo from "../components/UserInfo.js";
+// import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupupWithForm from "../components/PopupWithForm.js";
@@ -18,8 +18,7 @@ import PopupupWithForm from "../components/PopupWithForm.js";
 
 const profilePopup = document.querySelector(".modal");
 const modalAddPopup = document.querySelector(".modal_type_add");
-const modalEditForm = document.querySelector("#edit-modal-form");
-const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
+
 const modalButtonOpen = document.querySelector(".profile__title-button");
 const profileNameElement = document.querySelector(".profile__title");
 const profileDescriptionElement = document.querySelector(".profile__subtitle");
@@ -27,7 +26,12 @@ const modalAddButtonOpen = document.querySelector(".profile__button");
 const modalInput = document.querySelector("#modal-name");
 const modalInputDescription = document.querySelector("#modal-description");
 const cardSelector = "#card-template";
-const cardWrapper = document.querySelector(".cards");
+// const cardWrapper = document.querySelector(".cards");
+
+// Unused form selectors --- Selecting just form nothing else
+const modalEditForm = document.querySelector("#edit-modal-form");
+const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
+
 /* -------------------------------------------------------------*/
 /*       Setting initial input values for profileEditForm       */
 /* -------------------------------------------------------------*/
@@ -50,10 +54,9 @@ function renderCard(data) {
   return card.getView();
 }
 
-// iterate over each element in the initialCards array and call the function renderCard
-// initialCards.forEach((card) => renderCard(card, cardSelector));
-
-//CHECK
+/* -------------------------------------------------------------*/
+/*                    New Section Instance                      */
+/* -------------------------------------------------------------*/
 const sectionCard = new Section(
   {
     items: initialCards,
@@ -64,16 +67,17 @@ const sectionCard = new Section(
     },
   },
 
-  ".cards"
+  selectors.cardWrapper
 );
 
 sectionCard.renderItems();
 
-//close Button
-export const closeButtons = document.querySelectorAll(".modal__button");
 /* -------------------------------------------------------------*/
 /*  Click functionality for closebtn / opening btns for forms   */
 /* -------------------------------------------------------------*/
+
+//close Button
+export const closeButtons = document.querySelectorAll(".modal__button");
 
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
@@ -109,79 +113,25 @@ addFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
 /* -------------------------------------------------------------*/
-
 //Popup Edit Form
 const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
-  // const profileUpdateSubmitCl = new UserInfo(data.name, data.description);
-
-  // profileUpdateSubmitCl.getUserInfo();
-  // profileUpdateSubmitCl.setUserInfo();
+  // Change From Vanilla JS to using userInfo instance
   profileNameElement.textContent = data.name;
   profileDescriptionElement.textContent = data.description;
   profileUpdateForm.closeModal();
 });
-
 profileUpdateForm.setEventListeners();
 
 /* -------------------------------------------------------------*/
-/*        New Instance creating a card on submit                */
+/*      New Instance creating a card on submit using            */
+/*               new PopupWithForm instance                     */
 /* -------------------------------------------------------------*/
-
 const formSubmit2 = new PopupupWithForm(".modal_type_add", (data) => {
   const newUserCreatedCard = new Card(data, cardSelector, (data) => {
     previewPopup.openModal(data);
     newUserCreatedCard.getView();
   });
-
   sectionCard.addItem(newUserCreatedCard);
+  closeModal(modalAddPopup);
 });
 formSubmit2.setEventListeners();
-
-//
-// const addCardForm = new PopupupWithForm("#edit-modalAdd-form", (data) => {
-//   const transferValuesAdd = new UserInfo();
-// });
-
-// addCardForm.setEventListeners();
-
-// const card = new Card(data, cardSelector, (data) => {
-//   previewPopup.openModal(data);
-// });
-// return card.getView();
-
-// const renderCard(
-//   {
-//     name: data.name.value,
-//     link: data.description.value,
-//   },
-//   cardSelector
-// );
-// addCardForm.closeModal();
-
-// const newAddedCard = new Card(data, cardSelector, (data) => {
-//   previewPopup.openModal(data);
-// });
-
-// newAddedCard.getView();
-
-/* -------------------------------------------------------------*/
-/*                         Event Handlers for Submit            */
-/* -------------------------------------------------------------*/
-
-// modalAddEditForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const modalAddnameValue = event.target.name.value;
-//   const modalAddLinkValue = event.target.link.value;
-
-//   renderCard(
-//     {
-//       name: modalAddnameValue,
-//       link: modalAddLinkValue,
-//     },
-//     cardSelector
-//   );
-
-//   closeModal(modalAddPopup);
-
-//   event.target.reset();
-// });

@@ -35,6 +35,7 @@ export const validationSettings = {
 
 export const selectors = {
   imagePreview: "#image__preview",
+  cardWrapper: ".cards",
 };
 
 const modalSelectors = {
