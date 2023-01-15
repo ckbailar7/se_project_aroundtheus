@@ -6,12 +6,11 @@ import {
   selectors,
   profileSelectors,
 } from "../utils/constants.js";
-import { openModal, closeModal } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import PopupupWithForm from "../components/PopupWithForm.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 /* -------------------------------------------------------------*/
 /*                         Selectors                            */
@@ -27,17 +26,10 @@ const modalAddButtonOpen = document.querySelector(".profile__button");
 const modalInput = document.querySelector("#modal-name");
 const modalInputDescription = document.querySelector("#modal-description");
 const cardSelector = "#card-template";
-// const cardWrapper = document.querySelector(".cards");
 
 // Unused form selectors --- Selecting just form nothing else
 const modalEditForm = document.querySelector("#edit-modal-form");
 const modalAddEditForm = document.querySelector("#edit-modalAdd-form");
-
-/* -------------------------------------------------------------*/
-/*       Setting initial input values for profileEditForm       */
-/* -------------------------------------------------------------*/
-modalInput.defaultValue = profileNameElement.textContent;
-modalInputDescription.defaultValue = profileDescriptionElement.textContent;
 
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
@@ -73,26 +65,14 @@ const sectionCard = new Section(
 
 sectionCard.renderItems();
 
-/* -------------------------------------------------------------*/
-/*  Click functionality for closebtn / opening btns for forms   */
-/* -------------------------------------------------------------*/
-
-//close Button
-export const closeButtons = document.querySelectorAll(".modal__button");
-
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(popup));
-});
-
 //Open Modal Popup
 modalButtonOpen.addEventListener("click", () => {
-  openModal(profilePopup);
+  profileUpdateForm.openModal(profilePopup);
 });
 
 //Open Modal Add Button
 modalAddButtonOpen.addEventListener("click", () => {
-  openModal(modalAddPopup);
+  formSubmit2.openModal(modalAddPopup);
 });
 
 /* -------------------------------------------------------------*/
@@ -112,25 +92,28 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 /* -------------------------------------------------------------*/
+/* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
 /* -------------------------------------------------------------*/
 /* -------------------------------------------------------------*/
-/*      New Instance creating a card on submit using            */
-/*               new PopupWithForm instance                     */
 /* -------------------------------------------------------------*/
-const formSubmit2 = new PopupupWithForm(".modal_type_add", (data) => {
+/*      Instance for popup ADD form                             */
+/* -------------------------------------------------------------*/
+const formSubmit2 = new PopupWithForm(".modal_type_add", (data) => {
   const newUserCreatedCard = new Card(data, cardSelector, (data) => {
     previewPopup.openModal(data);
     newUserCreatedCard.getView();
   });
   sectionCard.addItem(newUserCreatedCard.getView());
-  closeModal(modalAddPopup);
+
   formSubmit2.closeModal();
 });
 formSubmit2.setEventListeners();
 
-//Popup Edit Form
-const profileUpdateForm = new PopupupWithForm(".modal_type_edit", (data) => {
+/* -------------------------------------------------------------*/
+/*        Instance for popup Edit form                        */
+/* -------------------------------------------------------------*/
+const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   profileUpdateForm.closeModal();
   userInfoCl.setUserInfo(data.name, data.description);
 });
@@ -142,3 +125,9 @@ const userInfoCl = new UserInfo(
 );
 
 userInfoCl.setUserInfo;
+
+/* -------------------------------------------------------------*/
+/*       Setting initial input values for profileEditForm       */
+/* -------------------------------------------------------------*/
+modalInput.defaultValue = profileNameElement.textContent;
+modalInputDescription.defaultValue = profileDescriptionElement.textContent;
