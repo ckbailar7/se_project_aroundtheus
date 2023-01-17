@@ -54,7 +54,6 @@ sectionCard.renderItems();
 //Open Modal Popup
 modalSelectors.modalButtonOpen.addEventListener("click", () => {
   openProfileForm();
-  profileUpdateForm.openModal();
 });
 
 //Open Modal Add Button
