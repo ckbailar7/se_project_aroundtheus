@@ -54,6 +54,7 @@ sectionCard.renderItems();
 //Open Modal Popup
 modalSelectors.modalButtonOpen.addEventListener("click", () => {
   openProfileForm();
+  profileUpdateForm.openModal();
 });
 
 //Open Modal Add Button
@@ -61,11 +62,12 @@ modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
   cardModal.openModal();
 });
 
+/// Reviewers Given Code ////
+
 function fillProfileForm() {
   const { name, description } = userInfo.getUserInfo();
-
-  profileSelectors.profileNameElement.value = name;
-  profileSelectors.profileDescriptionElement.value = description;
+  modalSelectors.modalNameInput.value = name;
+  modalSelectors.modalDescriptionInput.value = description;
 }
 
 function openProfileForm() {

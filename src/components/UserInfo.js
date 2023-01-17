@@ -16,7 +16,7 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: this._profileNameElement.textContent,
-      description: this._profileDescriptionSelector.textContent.value,
+      description: this._profileDescriptionSelector.textContent,
     };
   }
 }

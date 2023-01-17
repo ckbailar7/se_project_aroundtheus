@@ -47,70 +47,74 @@
     </div>
 
     <div class="modal modal_type_edit">
-      <button class="modal__button" type="button"></button>
-      <form novalidate class="modal__container" id="edit-modal-form">
-        <h2 class="modal__container-title">Edit Profile</h2>
-        <input
-          name="name"
-          class="modal__container-input modal__container-name"
-          id="modal-name"
-          type="text"
-          placeholder="Name"
-          required
-          maxlength="40"
-          minlength="2"
-          autocomplete="off"
-        />
-        <span class="" id="modal-name-error"></span>
+      <div class="modal__container">
+        <button class="modal__button" type="button"></button>
+        <form novalidate class="modal__form" id="edit-modal-form">
+          <h2 class="modal__container-title">Edit Profile</h2>
+          <input
+            name="name"
+            class="modal__container-input modal__container-name"
+            id="modal-name"
+            type="text"
+            placeholder="Name"
+            required
+            maxlength="40"
+            minlength="2"
+            autocomplete="off"
+          />
+          <span class="" id="modal-name-error"></span>
 
-        <input
-          name="description"
-          class="modal__container-input modal__container-description"
-          id="modal-description"
-          type="text"
-          placeholder="Description"
-          required
-          minlength="2"
-          maxlength="200"
-          autocomplete="off"
-        />
-        <span class="" id="modal-description-error"></span>
-        <button class="modal__container-button">Save</button>
-      </form>
+          <input
+            name="description"
+            class="modal__container-input modal__container-description"
+            id="modal-description"
+            type="text"
+            placeholder="Description"
+            required
+            minlength="2"
+            maxlength="200"
+            autocomplete="off"
+          />
+          <span class="" id="modal-description-error"></span>
+          <button class="modal__container-button">Save</button>
+        </form>
+      </div>
     </div>
     <div class="modal modal_type_add">
-      <button class="modal__button" type="button"></button>
-      <form novalidate class="modal__container" id="edit-modalAdd-form">
-        <h2 class="modal__container-title">New Place</h2>
-        <input
-          name="name"
-          id="modal-Addname"
-          class="modal__container-input modal__container-name"
-          type="text"
-          placeholder="Title"
-          required
-          minlength="1"
-          maxlength="30"
-          autocomplete="off"
-        />
-        <span class="" id="modal-Addname-error"></span>
-        <input
-          name="link"
-          class="modal__container-input modal__container-description"
-          id="modal-url"
-          type="url"
-          placeholder="Image Link"
-          required
-          autocomplete="off"
-        />
-        <span class="" id="modal-url-error"></span>
-        <button
-          class="modal__container-button modal__container-button_disabled"
-          disabled
-        >
-          Save
-        </button>
-      </form>
+      <div class="modal__container">
+        <button class="modal__button" type="button"></button>
+        <form novalidate class="modal__form" id="edit-modalAdd-form">
+          <h2 class="modal__container-title">New Place</h2>
+          <input
+            name="name"
+            id="modal-Addname"
+            class="modal__container-input modal__container-name"
+            type="text"
+            placeholder="Title"
+            required
+            minlength="1"
+            maxlength="30"
+            autocomplete="off"
+          />
+          <span class="" id="modal-Addname-error"></span>
+          <input
+            name="link"
+            class="modal__container-input modal__container-description"
+            id="modal-url"
+            type="url"
+            placeholder="Image Link"
+            required
+            autocomplete="off"
+          />
+          <span class="" id="modal-url-error"></span>
+          <button
+            class="modal__container-button modal__container-button_disabled"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
     </div>
 
     <template id="card-template">
