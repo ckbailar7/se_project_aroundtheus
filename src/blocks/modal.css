@@ -188,6 +188,18 @@
   color: #ffffff;
 }
 
+@media screen and (min-width: 430px) and (max-width: 530px) {
+  .modal__container {
+    max-width: 75%;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 429px) {
+  .modal__container {
+    max-width: 65%;
+  }
+}
+
 /* @media screen and (max-width: 1400px) {
   .modal__button {
     top: 224px;
