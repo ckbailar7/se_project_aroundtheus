@@ -122,11 +122,3 @@ const userInfo = new UserInfo(
   selectors.profNameElementIdSelector,
   selectors.profDescriptionElementIdSelector
 );
-
-/* -------------------------------------------------------------*/
-/*       Setting initial input values for profileEditForm       */
-/* -------------------------------------------------------------*/
-// modalSelectors.modalNameInput.defaultValue =
-//   profileSelectors.profileNameElement.textContent;
-// modalSelectors.modalDescriptionInput.defaultValue =
-//   profileSelectors.profileDescriptionElement.textContent;

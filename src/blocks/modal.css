@@ -38,18 +38,7 @@
   cursor: pointer;
   transition: 0.5s linear;
 }
-/* .modal__button-img {
-  width: 40px;
-  height: 40px;
-  background: transparent url(../images/closeIcon.png) center no-repeat;
-  border: none;
-  padding: 0;
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  cursor: pointer;
-  transition: 0.5s linear;
-} */
+
 .modal__button:hover {
   opacity: 0.5;
 }
@@ -91,9 +80,6 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 .modal__image {
-  /* max-width: 75vw;
-  max-height: 75vh;
-  width: 100%; */
   max-width: 100%;
   object-fit: cover;
 }
@@ -198,108 +184,3 @@
     max-width: 65%;
   }
 }
-
-/* @media screen and (max-width: 1400px) {
-  .modal__button {
-    top: 224px;
-    right: 450px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .modal__button {
-    top: 220px;
-    right: 258px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .modal__button {
-    top: 225px;
-    right: 130px;
-  }
-} */
-
-/* @media screen and (max-width: 636px) {
-  .modal {
-    margin-top: -161px;
-    margin-left: -141px;
-  }
-  .modal__add {
-    margin-top: -161px;
-    margin-left: -141px;
-  }
-  .modal__button {
-    margin-left: 256px;
-    margin-bottom: 13.62px;
-    width: 26px;
-    height: 26px;
-  }
-  .modal__container {
-    max-width: 300px;
-  }
-  .modal__container-title {
-    font-size: 18px;
-    margin: 25px 0 75px 22px;
-  }
-  .modal__container-name {
-    font-size: 14px;
-    margin: 0 22px 0 22px;
-  }
-  .modal__container-description {
-    font-size: 14px;
-    margin: 0 22px 0 22px;
-  }
-  .modal__container-button {
-    margin: 45px 22px 0 22px;
-    height: 46px;
-  }
-
-  .modal__container-input_error_visible {
-    margin: 0 20px;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .modal__button {
-    top: 230px;
-    right: 87px;
-  }
-
-  .modal {
-    margin: 0 auto;
-  }
-}
-
-@media screen and (min-width: 400px) and (max-width: 450px) {
-  .modal__button {
-    top: 236px;
-    right: 42px;
-  }
-}
-
-@media screen and (min-width: 300px) and (max-width: 399px) {
-  .modal__button {
-    top: 229px;
-    right: 6px;
-  }
-
-  .modal {
-    margin: 0 auto;
-  }
-
-  .modal__image {
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  .modal__caption {
-    padding-left: 30px;
-  }
-}
-
-@media screen and (min-width: 540px) and (max-width: 640px) {
-  .modal {
-    margin: 0 auto;
-  }
-} */

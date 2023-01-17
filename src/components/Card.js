@@ -17,17 +17,6 @@ class Card {
     this._element.remove();
   }
   _handleImagePopup() {
-    // document
-    //   .querySelector("#image__preview")
-    //   .querySelector(".modal__image").src = this._link;
-    // document
-    //   .querySelector("#image__preview")
-    //   .querySelector(".modal__image").alt = this._name;
-    // document
-    //   .querySelector("#image__preview")
-    //   .querySelector(".modal__caption").textContent = this._name;
-    // openModal(imagePreview);
-
     this._handleCardClick({ name: this._name, link: this._link });
   }
 
