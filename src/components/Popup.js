@@ -30,9 +30,5 @@ export default class Popup {
   setEventListeners() {
     this._closeButton.addEventListener("click", () => this.closeModal());
     this._popupElement.addEventListener("mousedown", this._handleOverlayClose);
-    this._popupElement.addEventListener(
-      "mousedown",
-      this._handleEscClose.bind(this)
-    );
   }
 }

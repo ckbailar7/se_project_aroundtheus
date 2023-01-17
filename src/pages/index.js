@@ -41,7 +41,7 @@ const sectionCard = new Section(
     items: initialCards,
 
     renderer: (data) => {
-      const card = new renderCard(data);
+      const card = renderCard(data);
       sectionCard.addItem(card);
     },
   },
@@ -53,13 +53,25 @@ sectionCard.renderItems();
 
 //Open Modal Popup
 modalSelectors.modalButtonOpen.addEventListener("click", () => {
-  profileUpdateForm.openModal();
+  openProfileForm();
 });
 
 //Open Modal Add Button
 modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
-  formSubmit2.openModal();
+  cardModal.openModal();
 });
+
+function fillProfileForm() {
+  const { name, description } = userInfo.getUserInfo();
+
+  profileSelectors.profileNameElement.value = name;
+  profileSelectors.profileDescriptionElement.value = description;
+}
+
+function openProfileForm() {
+  fillProfileForm();
+  profileUpdateForm.openModal();
+}
 
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
@@ -87,37 +99,32 @@ addFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 /*      Instance for popup ADD form                             */
 /* -------------------------------------------------------------*/
-const formSubmit2 = new PopupWithForm(".modal_type_add", (data) => {
-  const newUserCreatedCard = new Card(data, selectors.cardSelector, (data) => {
-    previewPopup.openModal(data);
-    newUserCreatedCard.getView();
-  });
-  sectionCard.addItem(newUserCreatedCard.getView());
+const cardModal = new PopupWithForm(".modal_type_add", (data) => {
+  const newUserCreatedCard = renderCard(data);
+  sectionCard.addItem(newUserCreatedCard);
 
-  formSubmit2.closeModal();
+  cardModal.closeModal();
 });
-formSubmit2.setEventListeners();
+cardModal.setEventListeners();
 
 /* -------------------------------------------------------------*/
 /*        Instance for popup Edit form                        */
 /* -------------------------------------------------------------*/
 const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   profileUpdateForm.closeModal();
-  userInfoCl.setUserInfo(data.name, data.description);
+  userInfo.setUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
 
-const userInfoCl = new UserInfo(
+const userInfo = new UserInfo(
   selectors.profNameElementIdSelector,
   selectors.profDescriptionElementIdSelector
 );
 
-userInfoCl.setUserInfo;
-
 /* -------------------------------------------------------------*/
 /*       Setting initial input values for profileEditForm       */
 /* -------------------------------------------------------------*/
-modalSelectors.modalNameInput.defaultValue =
-  profileSelectors.profileNameElement.textContent;
-modalSelectors.modalDescriptionInput.defaultValue =
-  profileSelectors.profileDescriptionElement.textContent;
+// modalSelectors.modalNameInput.defaultValue =
+//   profileSelectors.profileNameElement.textContent;
+// modalSelectors.modalDescriptionInput.defaultValue =
+//   profileSelectors.profileDescriptionElement.textContent;

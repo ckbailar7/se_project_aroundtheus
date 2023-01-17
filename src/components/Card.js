@@ -4,8 +4,6 @@ class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
 
-    this._imagePreview = cardSelector.imagePreview;
-
     this._handleCardClick = handleCardClick;
   }
 

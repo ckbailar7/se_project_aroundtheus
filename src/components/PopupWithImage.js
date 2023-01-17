@@ -3,16 +3,14 @@ export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
 
-    this.cardPreviewTitle = this._popupElement.querySelector("modal__caption");
+    this.cardPreviewTitle = this._popupElement.querySelector(".modal__caption");
   }
 
   openModal({ link, name }) {
     this._popupElement.querySelector("#popup__image").src = link;
     this._popupElement.querySelector("#popup__image").alt = name;
-    this._popupElement.querySelector(".modal__caption").textContent = name;
+    this.cardPreviewTitle.textContent = name;
 
     super.openModal();
-    super._handleEscClose;
-    super._handleOverlayClose;
   }
 }
