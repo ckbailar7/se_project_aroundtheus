@@ -69,11 +69,11 @@ function renderCard(data) {
     (data) => {
       previewPopup.openModal(data);
     },
-    (data) => {
+    () => {
       console.log("Hello From delete BTN");
-      //const id = card.getId();
-      console.log(card.getId());
-      //api.removeCard(id);
+      const id = card.getId;
+      console.log(id);
+      api.removeCard(id);
     }
   );
   return card.getView();
