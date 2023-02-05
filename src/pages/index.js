@@ -51,7 +51,7 @@ api.updateUserInfo().then((res) => {
   userInfo.setUserInfo(res.name, res.about);
 });
 // DELETE TASK TRIAL
-//api.removeCard("63deef9da721e77f89a02a79").then((res) => console.log(res));
+//api.removeCard("63dffa2740021a0212b2294d").then((res) => console.log(res));
 
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
@@ -64,17 +64,28 @@ previewPopup.setEventListeners();
 /* -------------------------------------------------------------*/
 function renderCard(data) {
   const card = new Card(
-    data,
-    selectors.cardSelector,
-    (data) => {
-      previewPopup.openModal(data);
+    {
+      data, // Data Coming in
+      //handleCardClick
+      handleCardClick: () => {
+        previewPopup.openModal(data);
+      },
+      //handleDeleteCardClick
+      handleDeleteCardClick: () => {
+        deletePopupForm.openModal();
+        // console.log(data);
+        // const id = data._id;
+        // console.log(id);
+        // api
+        //   .removeCard(data._id)
+        //   .then((res) => {
+        //     console.log("Deleted", res);
+        //     card.handleDeleteCardClick();
+        //   })
+        //   .catch((err) => console.log(err));
+      },
     },
-    () => {
-      console.log("Hello From delete BTN");
-      const id = card.getId;
-      console.log(id);
-      api.removeCard(id);
-    }
+    selectors.cardSelector // Card Selector
   );
   return card.getView();
 }
@@ -145,6 +156,9 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   userInfo.setUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
+
+const deletePopupForm = new PopupWithForm(".modal_type_delete");
+deletePopupForm.setEventListeners();
 
 const userInfo = new UserInfo(
   selectors.profNameElementIdSelector,
