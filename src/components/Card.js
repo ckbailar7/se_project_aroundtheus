@@ -1,10 +1,16 @@
 class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, handleDeleteCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._id = data.id;
+    this._handleDeleteCardClick = handleDeleteCardClick;
 
     this._handleCardClick = handleCardClick;
+  }
+
+  getId() {
+    return this._id;
   }
 
   // Handlers
@@ -32,7 +38,7 @@ class Card {
     this._element
       .querySelector(".card__deletebtn")
       .addEventListener("click", () => {
-        this._handleDeleteBtn();
+        this._handleDeleteCardClick();
       });
     //Image Click Popup Listener
     this._element

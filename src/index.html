@@ -124,7 +124,11 @@
 
         <div class="card__footer">
           <h2 class="card__name"></h2>
-          <button class="card__likebtn" type="button"></button>
+          <div class="card__like">
+            <button class="card__likebtn" type="button">
+              <h3 class="card__like-counter">0</h3>
+            </button>
+          </div>
         </div>
       </article>
     </template>
@@ -134,6 +138,19 @@
         <button class="modal__button" type="button"></button>
         <img id="popup__image" class="modal__image" src="#" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <div class="modal modal_type_delete" id="modal__delete">
+      <div class="modal__container">
+        <button class="modal__button" type="button"></button>
+        <h3>Are you sure?</h3>
+        <button
+          class="modal__container-button modal__container-button_disabled"
+          disabled
+        >
+          Save
+        </button>
       </div>
     </div>
     <!-- <script type="module" src="./components/scripts/index.js"></script> -->
