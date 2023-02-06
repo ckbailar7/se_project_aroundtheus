@@ -17,6 +17,10 @@ import PopupWithForm from "../components/PopupWithForm.js";
 /* -------------------------------------------------------------*/
 /*                         API                                  */
 /* -------------------------------------------------------------*/
+const userInfo = new UserInfo(
+  selectors.profNameElementIdSelector,
+  selectors.profDescriptionElementIdSelector
+);
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
@@ -73,6 +77,7 @@ function renderCard(data) {
       //handleDeleteCardClick
       handleDeleteCardClick: () => {
         deletePopupForm.openModal();
+
         // console.log(data);
         // const id = data._id;
         // console.log(id);
@@ -115,6 +120,19 @@ function openProfileForm() {
   profileUpdateForm.openModal();
 }
 
+const deletePopupForm = new PopupWithForm(".modal_type_delete", {
+  handleDeleteSubmit: () => {
+    api
+      .removeCard(data._id)
+      .then((res) => {
+        console.log("Deleted", res);
+        card.handleDeleteCardClick();
+      })
+      .catch((err) => console.log(err));
+  },
+});
+deletePopupForm.setEventListenersDEL();
+
 /* -------------------------------------------------------------*/
 /*                         Validation                           */
 /* -------------------------------------------------------------*/
@@ -156,11 +174,3 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   userInfo.setUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
-
-const deletePopupForm = new PopupWithForm(".modal_type_delete");
-deletePopupForm.setEventListeners();
-
-const userInfo = new UserInfo(
-  selectors.profNameElementIdSelector,
-  selectors.profDescriptionElementIdSelector
-);
