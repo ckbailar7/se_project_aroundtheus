@@ -5,12 +5,13 @@ class Card {
     this._cardSelector = cardSelector;
     this._id = data.id;
     this._handleDeleteCardClick = handleDeleteCardClick;
+    // this.handleDeleteSubmitButton = handleDeleteSubmitButton;
 
     this._handleCardClick = handleCardClick;
   }
 
-  getId() {
-    return this._id;
+  removeCard() {
+    this._element.remove();
   }
 
   // Handlers
@@ -46,6 +47,12 @@ class Card {
       .addEventListener("click", () => {
         this._handleImagePopup();
       });
+    //Delete YES Button Listener
+    // this._element
+    //   .querySelector(".modal__container-button")
+    //   .addEventListener("click", () => {
+    //     this.handleDeleteSubmitButton();
+    //   });
   }
 
   _getTemplate() {

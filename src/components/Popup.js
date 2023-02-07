@@ -32,8 +32,8 @@ export default class Popup {
     this._popupElement.addEventListener("mousedown", this._handleOverlayClose);
   }
 
-  setEventListenersDEL() {
-    this._closeButton.addEventListener("click", () => this.closeDELModal());
-    this._popupElement.addEventListener("mousedown", this._handleOverlayClose);
-  }
+  // setEventListenersDEL() {
+  //   this._closeButton.addEventListener("click", () => this.closeDELModal());
+  //   this._popupElement.addEventListener("mousedown", this._handleOverlayClose);
+  // }
 }

@@ -13,14 +13,20 @@ import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupwithDelete from "../components/PopupWithDelete.js";
 
 /* -------------------------------------------------------------*/
-/*                         API                                  */
+/*                         UserInfo Class                       */
 /* -------------------------------------------------------------*/
+
 const userInfo = new UserInfo(
   selectors.profNameElementIdSelector,
   selectors.profDescriptionElementIdSelector
 );
+
+/* -------------------------------------------------------------*/
+/*                         API                                  */
+/* -------------------------------------------------------------*/
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
@@ -76,18 +82,15 @@ function renderCard(data) {
       },
       //handleDeleteCardClick
       handleDeleteCardClick: () => {
+        //const id = card._id;
         deletePopupForm.openModal();
-
-        // console.log(data);
-        // const id = data._id;
-        // console.log(id);
-        // api
-        //   .removeCard(data._id)
-        //   .then((res) => {
-        //     console.log("Deleted", res);
-        //     card.handleDeleteCardClick();
-        //   })
-        //   .catch((err) => console.log(err));
+        console.log("Hello from Delete Button");
+        deletePopupForm.setSubmitAction(() => {
+          api.removeCard(data._id).then(() => {
+            card.removeCard();
+            console.log("Delete Successfull");
+          });
+        });
       },
     },
     selectors.cardSelector // Card Selector
@@ -96,7 +99,7 @@ function renderCard(data) {
 }
 
 /* -------------------------------------------------------------*/
-/*                    New Section Instance                      */
+/*                    Click modalPopup eventListeners           */
 /* -------------------------------------------------------------*/
 
 //Open Modal Popup
@@ -109,6 +112,9 @@ modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
   cardModal.openModal();
 });
 
+/* -------------------------------------------------------------*/
+/*                   Functions to set Inputs on popup open      */
+/* -------------------------------------------------------------*/
 function fillProfileForm() {
   const { name, description } = userInfo.getUserInfo();
   modalSelectors.modalNameInput.value = name;
@@ -120,21 +126,15 @@ function openProfileForm() {
   profileUpdateForm.openModal();
 }
 
-const deletePopupForm = new PopupWithForm(".modal_type_delete", {
-  handleDeleteSubmit: () => {
-    api
-      .removeCard(data._id)
-      .then((res) => {
-        console.log("Deleted", res);
-        card.handleDeleteCardClick();
-      })
-      .catch((err) => console.log(err));
-  },
-});
-deletePopupForm.setEventListenersDEL();
+/* -------------------------------------------------------------*/
+/*                        New instance of popupwithDelete        */
+/* -------------------------------------------------------------*/
+// How to pass in the card that was clicked on data to handleDeleteSubmit => then to api.removeCard(PASS IN CARD ID HERE)
+const deletePopupForm = new PopupwithDelete(".modal_type_delete");
+deletePopupForm.setEventListeners();
 
 /* -------------------------------------------------------------*/
-/*                         Validation                           */
+/*                        FORM Validation                       */
 /* -------------------------------------------------------------*/
 
 const editFormElement =
@@ -163,7 +163,6 @@ const cardModal = new PopupWithForm(".modal_type_add", (data) => {
   api.addCard(data);
   cardModal.closeModal();
 });
-
 cardModal.setEventListeners();
 
 /* -------------------------------------------------------------*/
@@ -174,3 +173,37 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   userInfo.setUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// , {
+//   handleDeleteSubmit: () => {
+//     //console.log(api.getUserInfo());
+//     // const id = api.getUserInfo
+//     // console.log(id);
+//     //console.log(api.getId());
+//     // api.getCardList().then((data) => {
+//     //   console.log(data);
+//     // });
+//     card.removeCard();
+//     // api.removeCard(data._id);
+//     //   .then((res) => {
+//     //     console.log("Deleted", res);
+//     //     card.handleDeleteCardClick();
+//     //   })
+//     //   .catch((err) => console.log(err));
+//     console.log("HELLO FROM DELETE SUBMIT BUTTON");
+//     // console.log(data);
+//   },
+// }

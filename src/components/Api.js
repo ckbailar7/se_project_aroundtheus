@@ -4,6 +4,10 @@ class Api {
     this._authToken = authToken;
   }
 
+  getId() {
+    return;
+  }
+
   //Task 1 - GET Request load User Information from the server
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -21,18 +25,23 @@ class Api {
 
   //Task 2 - GET Request load CARDS from server
   getCardList() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken,
-      },
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-      )
+    return (
+      fetch(`${this._baseUrl}/cards`, {
+        headers: {
+          authorization: this._authToken,
+        },
+      })
+        .then((res) =>
+          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+        )
+        // .then((res) => {
+        //   console.log(res);
+        // })
 
-      .catch((err) => {
-        console.log(err);
-      });
+        .catch((err) => {
+          console.log(err);
+        })
+    );
   }
 
   //Task 3 -  PATCH Request for Editing Profile
