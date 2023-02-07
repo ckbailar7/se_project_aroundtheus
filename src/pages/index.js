@@ -39,10 +39,10 @@ api.getUserInfo().then((res) => console.log(res));
 api.getUserInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
 });
-
+let sectionCard;
 //api card render
 api.getCardList().then((cardData) => {
-  const sectionCard = new Section(
+  sectionCard = new Section(
     {
       items: cardData,
 
@@ -160,7 +160,10 @@ addFormValidator.enableValidation();
 /*      Instance for popup ADD form                             */
 /* -------------------------------------------------------------*/
 const cardModal = new PopupWithForm(".modal_type_add", (data) => {
-  api.addCard(data);
+  api.addCard(data).then((res) => {
+    const card = renderCard(res);
+    sectionCard.addItem(card);
+  });
   cardModal.closeModal();
 });
 cardModal.setEventListeners();
