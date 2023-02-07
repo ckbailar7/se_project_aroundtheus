@@ -47,6 +47,7 @@
   border: none;
 }
 .card__like-counter {
+  margin: 0;
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;

@@ -4,10 +4,6 @@ class Api {
     this._authToken = authToken;
   }
 
-  getId() {
-    return;
-  }
-
   //Task 1 - GET Request load User Information from the server
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -101,6 +97,25 @@ class Api {
         console.log(err);
       });
   }
+
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // removeLike() {
+
+  // }
 }
 
 export default Api;

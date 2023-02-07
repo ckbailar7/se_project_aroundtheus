@@ -82,7 +82,6 @@ function renderCard(data) {
       },
       //handleDeleteCardClick
       handleDeleteCardClick: () => {
-        //const id = card._id;
         deletePopupForm.openModal();
         console.log("Hello from Delete Button");
         deletePopupForm.setSubmitAction(() => {
@@ -190,23 +189,3 @@ profileUpdateForm.setEventListeners();
 //
 //
 //
-// , {
-//   handleDeleteSubmit: () => {
-//     //console.log(api.getUserInfo());
-//     // const id = api.getUserInfo
-//     // console.log(id);
-//     //console.log(api.getId());
-//     // api.getCardList().then((data) => {
-//     //   console.log(data);
-//     // });
-//     card.removeCard();
-//     // api.removeCard(data._id);
-//     //   .then((res) => {
-//     //     console.log("Deleted", res);
-//     //     card.handleDeleteCardClick();
-//     //   })
-//     //   .catch((err) => console.log(err));
-//     console.log("HELLO FROM DELETE SUBMIT BUTTON");
-//     // console.log(data);
-//   },
-// }
