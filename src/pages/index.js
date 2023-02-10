@@ -32,7 +32,6 @@ const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
 });
-// Task 0.5 - Logging user info object --- Precursor to 1 --- Possibly not needed
 api.getUserInfo().then((res) => console.log(res));
 
 // Task 1 - actually using returned Object(data) --- Setting the user info via the server
@@ -55,6 +54,7 @@ api.getCardList().then((cardData) => {
     selectors.cardWrapper
   );
   sectionCard.renderItems();
+  //sectionCard.updateLikes();
 });
 //Task 3 using patch request for updating user info --- UPDATED USERINFO WITH //userInfo.setUserInfo(res.name, res.about);
 api.updateUserInfo().then((res) => {
@@ -62,12 +62,6 @@ api.updateUserInfo().then((res) => {
 });
 // DELETE TASK TRIAL
 //api.removeCard("63dffa2740021a0212b2294d").then((res) => console.log(res));
-
-/* -------------------------------------------------------------*/
-/*                    PopupWithImage Instance                   */
-/* -------------------------------------------------------------*/
-const previewPopup = new PopupWithImage(selectors.imagePreview);
-previewPopup.setEventListeners();
 
 /* -------------------------------------------------------------*/
 /*                    ORGINAL Render Cards Function             */
@@ -91,12 +85,14 @@ function renderCard(data) {
           });
         });
       },
+      //handleLikeClick
+
+      // handleOnLoadLikeSet sets initial cards on load like ammount
     },
     selectors.cardSelector // Card Selector
   );
   return card.getView();
 }
-
 /* -------------------------------------------------------------*/
 /*                    Click modalPopup eventListeners           */
 /* -------------------------------------------------------------*/
@@ -110,6 +106,11 @@ modalSelectors.modalButtonOpen.addEventListener("click", () => {
 modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
   cardModal.openModal();
 });
+/* -------------------------------------------------------------*/
+/*                    PopupWithImage Instance                   */
+/* -------------------------------------------------------------*/
+const previewPopup = new PopupWithImage(selectors.imagePreview);
+previewPopup.setEventListeners();
 
 /* -------------------------------------------------------------*/
 /*                   Functions to set Inputs on popup open      */
@@ -128,14 +129,12 @@ function openProfileForm() {
 /* -------------------------------------------------------------*/
 /*                        New instance of popupwithDelete        */
 /* -------------------------------------------------------------*/
-// How to pass in the card that was clicked on data to handleDeleteSubmit => then to api.removeCard(PASS IN CARD ID HERE)
 const deletePopupForm = new PopupwithDelete(".modal_type_delete");
 deletePopupForm.setEventListeners();
 
 /* -------------------------------------------------------------*/
 /*                        FORM Validation                       */
 /* -------------------------------------------------------------*/
-
 const editFormElement =
   modalSelectors.modalContainer.querySelector(".modal__container");
 const addFormElement =
@@ -149,7 +148,6 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
 /* -------------------------------------------------------------*/
 /* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
@@ -175,17 +173,3 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   userInfo.setUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

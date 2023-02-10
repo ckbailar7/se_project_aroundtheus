@@ -98,9 +98,48 @@ class Api {
       });
   }
 
+  getLikesLength(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+      .then((res) => {
+        console.log(
+          "This is From Api.js: Number of likes on current card : ===>   " +
+            res.likes.length
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   addLike(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+      .then((res) => {
+        console.log(res.likes.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  removeLike() {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "DELETE",
       headers: {
         authorization: this._authToken,
       },
@@ -112,10 +151,6 @@ class Api {
         console.log(err);
       });
   }
-
-  // removeLike() {
-
-  // }
 }
 
 export default Api;

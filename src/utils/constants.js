@@ -39,6 +39,7 @@ export const selectors = {
   profNameElementIdSelector: ".profile__title",
   profDescriptionElementIdSelector: ".profile__subtitle",
   cardSelector: "#card-template",
+  likeCounterSelector: ".card__like-counter",
 };
 
 export const modalSelectors = {

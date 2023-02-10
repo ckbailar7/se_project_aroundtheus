@@ -1,13 +1,25 @@
+import { data } from "autoprefixer";
+
 class Card {
-  constructor({ data, handleCardClick, handleDeleteCardClick }, cardSelector) {
+  constructor(
+    {
+      data,
+      handleCardClick,
+      handleDeleteCardClick,
+      // handleLikeClick,
+      // handleOnLoadLikeSet,
+    },
+    cardSelector
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._id = data.id;
+    this._likeAmount = data.likes;
     this._handleDeleteCardClick = handleDeleteCardClick;
-    // this.handleDeleteSubmitButton = handleDeleteSubmitButton;
-
     this._handleCardClick = handleCardClick;
+    //this._handleLikeClick = handleLikeClick;
+    //this._handleOnLoadLikeSet = handleOnLoadLikeSet;
   }
 
   removeCard() {
@@ -34,6 +46,8 @@ class Card {
       .querySelector(".card__likebtn")
       .addEventListener("click", () => {
         this._handleLikeIcon();
+        console.log("Hello from like btn");
+        // this._handleLikeClick();
       });
     // Delete Button Listener
     this._element
@@ -69,10 +83,16 @@ class Card {
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
+    this._likeCounter = this._element.querySelector(".card__like-counter");
+    this._likeCounter.textContent = this._likeAmount.length;
 
     this._setEventListeners();
 
     return this._element;
+  }
+
+  getCardLikes(data) {
+    return data.likes;
   }
 }
 
