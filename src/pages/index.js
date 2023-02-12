@@ -112,50 +112,7 @@ function renderCard(data) {
               console.log("Likes set appropriatley");
             });
         }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // if (card._checkLikeStatus()) {
-        //   //Send DELETE Request
-        //   //Remove Like
-        //   api
-        //     .removeLike(data._id)
-        //     .then(() => {
-        //       card.removeLike();
-        //       card.setLikeCounter();
-        //     })
-        //     .catch((err) => {
-        //       console.log(err);
-        //     });
-        //   console.log("Card is Liked");
-        // } else {
-        //   api
-        //     .addLike(data._id)
-        //     .then(() => {
-        //       //card.addLike();
-        //       card.setLikeCounter();
-        //     })
-        //     .catch((err) => {
-        //       console.log(err);
-        //     });
-        //   console.log("Card is not liked");
-        // }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       },
-      // handleOnLoadLikeSet
-      // handleOnLoadLikeSet: (data) => {
-      //   data.forEach((data) => {
-      //     if(data._id === ) {
-
-      //     }
-      //   })
-      // }
-
-      // onLoadLikeCheck: (data) => {
-      //   data.forEach((obj) => {
-      //     if (obj._id === userId) {
-      //       card.addLike();
-      //     }
-      //   });
-      // },
     },
     selectors.cardSelector // Card Selector
   );
