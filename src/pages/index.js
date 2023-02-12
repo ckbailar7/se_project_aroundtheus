@@ -32,9 +32,9 @@ const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
 });
-api.getUserInfo().then((res) => console.log(res));
+//api.getUserInfo().then((res) => console.log(res));
 
-// Task 1 - actually using returned Object(data) --- Setting the user info via the server
+// - Setting the user info via the server
 api.getUserInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
 });
@@ -64,7 +64,7 @@ api.updateUserInfo().then((res) => {
 //api.removeCard("63dffa2740021a0212b2294d").then((res) => console.log(res));
 
 /* -------------------------------------------------------------*/
-/*                    ORGINAL Render Cards Function             */
+/*                    renderCard Function with API handlers     */
 /* -------------------------------------------------------------*/
 function renderCard(data) {
   const card = new Card(
@@ -86,8 +86,76 @@ function renderCard(data) {
         });
       },
       //handleLikeClick
+      handleLikeClick: () => {
+        //console.log("Hello From handleLikeClick parameter");
+        if (card._checkLikeStatus()) {
+          console.log("Like Button Clicked and active");
+          api
+            .addLike(data._id)
+            .then(() => {
+              card.addLike();
+              console.log("Like Sent to Server Successfully...");
+            })
+            .then(() => {
+              card.setLikeCounter(data.likes.length);
+              console.log("Likes set appropriatley");
+            });
+        } else {
+          console.log("Like Button DEClicked and NOT active");
+          api
+            .removeLike(data._id)
+            .then(() => {
+              card.removeLike();
+            })
+            .then(() => {
+              card.setLikeCounter(data.likes.length);
+              console.log("Likes set appropriatley");
+            });
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // if (card._checkLikeStatus()) {
+        //   //Send DELETE Request
+        //   //Remove Like
+        //   api
+        //     .removeLike(data._id)
+        //     .then(() => {
+        //       card.removeLike();
+        //       card.setLikeCounter();
+        //     })
+        //     .catch((err) => {
+        //       console.log(err);
+        //     });
+        //   console.log("Card is Liked");
+        // } else {
+        //   api
+        //     .addLike(data._id)
+        //     .then(() => {
+        //       //card.addLike();
+        //       card.setLikeCounter();
+        //     })
+        //     .catch((err) => {
+        //       console.log(err);
+        //     });
+        //   console.log("Card is not liked");
+        // }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      },
+      // handleOnLoadLikeSet
+      // handleOnLoadLikeSet: (data) => {
+      //   data.forEach((data) => {
+      //     if(data._id === ) {
 
-      // handleOnLoadLikeSet sets initial cards on load like ammount
+      //     }
+      //   })
+      // }
+
+      // onLoadLikeCheck: (data) => {
+      //   data.forEach((obj) => {
+      //     if (obj._id === userId) {
+      //       card.addLike();
+      //     }
+      //   });
+      // },
     },
     selectors.cardSelector // Card Selector
   );

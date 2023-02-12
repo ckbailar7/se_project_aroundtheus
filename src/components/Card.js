@@ -6,8 +6,8 @@ class Card {
       data,
       handleCardClick,
       handleDeleteCardClick,
-      // handleLikeClick,
-      // handleOnLoadLikeSet,
+      handleLikeClick,
+      handleOnLoadLikeSet,
     },
     cardSelector
   ) {
@@ -18,8 +18,19 @@ class Card {
     this._likeAmount = data.likes;
     this._handleDeleteCardClick = handleDeleteCardClick;
     this._handleCardClick = handleCardClick;
-    //this._handleLikeClick = handleLikeClick;
-    //this._handleOnLoadLikeSet = handleOnLoadLikeSet;
+    this._handleLikeClick = handleLikeClick;
+    this._handleOnLoadLikeSet = handleOnLoadLikeSet;
+  }
+
+  setLikeCounter() {
+    this._likeCounter.textContent = this._likeAmount.length;
+  }
+
+  addLike() {
+    this._likeButton.classList.add("card__likebtn-change");
+  }
+  removeLike() {
+    this._likeButton.classList.remove("card__likebtn-change");
   }
 
   removeCard() {
@@ -38,6 +49,15 @@ class Card {
   _handleImagePopup() {
     this._handleCardClick({ name: this._name, link: this._link });
   }
+  _checkLikeStatus() {
+    if (this._likeButton.classList.contains("card__likebtn-change")) {
+      console.log("Like Button Clicked");
+      return true;
+    } else {
+      console.log("Like Button not clicked");
+      return false;
+    }
+  }
 
   // Setting Event Listeners
   _setEventListeners() {
@@ -46,8 +66,8 @@ class Card {
       .querySelector(".card__likebtn")
       .addEventListener("click", () => {
         this._handleLikeIcon();
-        console.log("Hello from like btn");
-        // this._handleLikeClick();
+        //console.log("Hello from like btn");
+        this._handleLikeClick();
       });
     // Delete Button Listener
     this._element
@@ -84,6 +104,7 @@ class Card {
     this._element.querySelector(".card__name").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
     this._likeCounter = this._element.querySelector(".card__like-counter");
+    this._likeButton = this._element.querySelector(".card__likebtn");
     this._likeCounter.textContent = this._likeAmount.length;
 
     this._setEventListeners();

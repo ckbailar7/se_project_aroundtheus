@@ -21,23 +21,17 @@ class Api {
 
   //Task 2 - GET Request load CARDS from server
   getCardList() {
-    return (
-      fetch(`${this._baseUrl}/cards`, {
-        headers: {
-          authorization: this._authToken,
-        },
-      })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-        )
-        // .then((res) => {
-        //   console.log(res);
-        // })
-
-        .catch((err) => {
-          console.log(err);
-        })
-    );
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //Task 3 -  PATCH Request for Editing Profile
@@ -49,8 +43,8 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "Jacques Cousteau",
-        about: "Sailor, researcher",
+        name: "Jared Girvan",
+        about: "Group 12",
       }),
     })
       .then((res) =>
@@ -130,14 +124,15 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .then((res) => {
-        console.log(res.likes.length);
+        console.log("Logging from addLike() inside Api.js...");
+        console.log(res.likes);
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  removeLike() {
+  removeLike(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: {
@@ -147,6 +142,10 @@ class Api {
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
+      .then((res) => {
+        console.log("Logging from removeLike() inside Api.js...");
+        console.log(res.likes);
+      })
       .catch((err) => {
         console.log(err);
       });
