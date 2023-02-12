@@ -42,6 +42,7 @@ class Card {
     this._element
       .querySelector(".card__likebtn")
       .classList.toggle("card__likebtn-change");
+    this._likeCounter.textContent = this._likeAmount.length;
   }
   _handleDeleteBtn() {
     this._element.remove();
@@ -51,10 +52,10 @@ class Card {
   }
   _checkLikeStatus() {
     if (this._likeButton.classList.contains("card__likebtn-change")) {
-      console.log("Like Button Clicked");
+      //console.log("Like Button Clicked");
       return true;
     } else {
-      console.log("Like Button not clicked");
+      //console.log("Like Button not clicked");
       return false;
     }
   }

@@ -88,28 +88,30 @@ function renderCard(data) {
       //handleLikeClick
       handleLikeClick: () => {
         //console.log("Hello From handleLikeClick parameter");
-        if (card._checkLikeStatus()) {
-          console.log("Like Button Clicked and active");
-          api
-            .addLike(data._id)
-            .then(() => {
-              card.addLike();
-              console.log("Like Sent to Server Successfully...");
-            })
-            .then(() => {
-              card.setLikeCounter(data.likes.length);
-              console.log("Likes set appropriatley");
-            });
-        } else {
-          console.log("Like Button DEClicked and NOT active");
+        if (!card._checkLikeStatus()) {
+          //console.log("Like Button Clicked and active");
           api
             .removeLike(data._id)
             .then(() => {
-              card.removeLike();
+              //card.removeLike();
+              console.log("Like Deleted from Server Successfully...");
             })
             .then(() => {
               card.setLikeCounter(data.likes.length);
-              console.log("Likes set appropriatley");
+              console.log("Likes set appropriately");
+            });
+        } else {
+          //console.log("Like Button Clicked and active");
+          api
+            .addLike(data._id)
+            .then(() => {
+              //card.removeLike();
+              console.log("Like Added to server Successfully");
+            })
+            .then(() => {
+              console.log("Setting Likes ...");
+              card.setLikeCounter(data.likes.length);
+              console.log("Likes set appropriately");
             });
         }
       },
