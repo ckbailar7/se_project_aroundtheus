@@ -126,6 +126,7 @@ class Api {
       .then((res) => {
         console.log("Logging from addLike() inside Api.js...");
         console.log(res.likes);
+        return res;
       })
       .catch((err) => {
         console.log(err);
@@ -145,6 +146,7 @@ class Api {
       .then((res) => {
         console.log("Logging from removeLike() inside Api.js...");
         console.log(res.likes);
+        return res;
       })
       .catch((err) => {
         console.log(err);

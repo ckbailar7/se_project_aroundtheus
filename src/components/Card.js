@@ -1,4 +1,4 @@
-import { data } from "autoprefixer";
+//import { data } from "autoprefixer";
 
 class Card {
   constructor(
@@ -22,8 +22,8 @@ class Card {
     this._handleOnLoadLikeSet = handleOnLoadLikeSet;
   }
 
-  setLikeCounter() {
-    this._likeCounter.textContent = this._likeAmount.length;
+  setLikeCounter(res) {
+    this._likeCounter.textContent = res.likes.length;
   }
 
   addLike() {
@@ -42,7 +42,7 @@ class Card {
     this._element
       .querySelector(".card__likebtn")
       .classList.toggle("card__likebtn-change");
-    this._likeCounter.textContent = this._likeAmount.length;
+    //this._likeCounter.innerHTML = this._likeAmount.length;
   }
   _handleDeleteBtn() {
     this._element.remove();
@@ -82,12 +82,6 @@ class Card {
       .addEventListener("click", () => {
         this._handleImagePopup();
       });
-    //Delete YES Button Listener
-    // this._element
-    //   .querySelector(".modal__container-button")
-    //   .addEventListener("click", () => {
-    //     this.handleDeleteSubmitButton();
-    //   });
   }
 
   _getTemplate() {
@@ -114,7 +108,7 @@ class Card {
   }
 
   getCardLikes(data) {
-    return data.likes;
+    console.log(data.likes);
   }
 }
 

@@ -66,6 +66,7 @@ api.updateUserInfo().then((res) => {
 /* -------------------------------------------------------------*/
 /*                    renderCard Function with API handlers     */
 /* -------------------------------------------------------------*/
+
 function renderCard(data) {
   const card = new Card(
     {
@@ -87,32 +88,16 @@ function renderCard(data) {
       },
       //handleLikeClick
       handleLikeClick: () => {
-        //console.log("Hello From handleLikeClick parameter");
         if (!card._checkLikeStatus()) {
-          //console.log("Like Button Clicked and active");
-          api
-            .removeLike(data._id)
-            .then(() => {
-              //card.removeLike();
-              console.log("Like Deleted from Server Successfully...");
-            })
-            .then(() => {
-              card.setLikeCounter(data.likes.length);
-              console.log("Likes set appropriately");
-            });
+          api.removeLike(data._id).then((res) => {
+            card.setLikeCounter(res);
+            console.log("Like Deleted from Server Successfully...");
+          });
         } else {
-          //console.log("Like Button Clicked and active");
-          api
-            .addLike(data._id)
-            .then(() => {
-              //card.removeLike();
-              console.log("Like Added to server Successfully");
-            })
-            .then(() => {
-              console.log("Setting Likes ...");
-              card.setLikeCounter(data.likes.length);
-              console.log("Likes set appropriately");
-            });
+          api.addLike(data._id).then((res) => {
+            card.setLikeCounter(res);
+            console.log("Like Added to server Successfully");
+          });
         }
       },
     },
