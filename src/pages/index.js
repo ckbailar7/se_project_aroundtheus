@@ -98,19 +98,19 @@ function renderCard(data) {
           api.addLike(data._id).then((res) => {
             card.setLikeCounter(res);
             card.addLike();
-            console.log("Like Added to server Successfully");
+            console.log("Like Added to server Successfully...");
           });
         }
       },
       //handleOnLoadLikeSet
-      handleOnLoadLikeSet: () => {
-        card._checkIdforLike(data.likes);
-        // if (card.likes.contains("539f93f7-dc05-45c3-9b88-f97ff528fbfa")) {
-        //   return true;
-        // } else {
-        //   return false;
-        // }
-      },
+      // handleOnLoadLikeSet: () => {
+      //   card._checkIdforLike(data.likes);
+      // },
+
+      // handleOnLoadDeleteBtnSet: () => {
+      //   card._checkIdForDeleteIcon(data);
+      //   //console.log(data._id);
+      // },
     },
     selectors.cardSelector // Card Selector
   );

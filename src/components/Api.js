@@ -124,8 +124,8 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .then((res) => {
-        console.log("Logging from addLike() inside Api.js...");
-        console.log(res.likes);
+        //console.log("Logging from addLike() inside Api.js...");
+        //console.log(res.likes);
         return res;
       })
       .catch((err) => {
@@ -144,8 +144,8 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .then((res) => {
-        console.log("Logging from removeLike() inside Api.js...");
-        console.log(res.likes);
+        //console.log("Logging from removeLike() inside Api.js...");
+        //console.log(res.likes);
         return res;
       })
       .catch((err) => {

@@ -9,10 +9,12 @@ class Card {
       handleCardClick,
       handleDeleteCardClick,
       handleLikeClick,
-      handleOnLoadLikeSet,
+      //handleOnLoadLikeSet,
+      handleOnLoadDeleteBtnSet,
     },
     cardSelector
   ) {
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -21,7 +23,8 @@ class Card {
     this._handleDeleteCardClick = handleDeleteCardClick;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
-    this._handleOnLoadLikeSet = handleOnLoadLikeSet;
+    //this._handleOnLoadLikeSet = handleOnLoadLikeSet;
+    this._handleOnLoadDeleteBtnSet = handleOnLoadDeleteBtnSet;
   }
 
   setLikeCounter(res) {
@@ -33,6 +36,14 @@ class Card {
   }
   removeLike() {
     this._likeButton.classList.remove("card__likebtn-change");
+  }
+
+  addTrashIcon() {
+    this._trashIcon.classList.remove("card__deletebtn-nonactive");
+  }
+
+  removeTrashIcon() {
+    this._trashIcon.classList.add("card__deletebtn-nonactive");
   }
 
   removeCard() {
@@ -70,6 +81,27 @@ class Card {
         this.removeLike();
       }
     });
+  }
+
+  _checkIdForDeleteIcon(data) {
+    if (data.owner._id === "f978e887083bb5087ebbe974") {
+      this.addTrashIcon();
+    } else {
+      this.removeTrashIcon();
+    }
+    // data.forEach((obj) => {
+    //   if (obj._id === "63e84cfb5c40dd05d5a06fa4") {
+    //     console.log("data is the same");
+    //   }
+    // });
+    // data.forEach((obj) => {
+    //   if (obj._id === "f978e887083bb5087ebbe974") {
+    //     this.addTrashIcon();
+    //   } else {
+    //     this.removeTrashIcon();
+    //   }
+    // });
+    //console.log(`This cards ID is: ${data._id}`);
   }
 
   // Setting Event Listeners
@@ -112,10 +144,12 @@ class Card {
     this._element.querySelector(".card__image").alt = this._name;
     this._likeCounter = this._element.querySelector(".card__like-counter");
     this._likeButton = this._element.querySelector(".card__likebtn");
+    this._trashIcon = this._element.querySelector(".card__deletebtn");
     this._likeCounter.textContent = this._likeAmount.length;
 
     this._setEventListeners();
-    this._handleOnLoadLikeSet();
+    this._checkIdforLike(this._likeAmount);
+    this._checkIdForDeleteIcon(this._data);
 
     return this._element;
   }
