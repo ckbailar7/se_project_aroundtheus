@@ -1,7 +1,3 @@
-//import { data } from "autoprefixer";
-
-import { data } from "autoprefixer";
-
 class Card {
   constructor(
     {
@@ -9,7 +5,6 @@ class Card {
       handleCardClick,
       handleDeleteCardClick,
       handleLikeClick,
-      //handleOnLoadLikeSet,
       handleOnLoadDeleteBtnSet,
     },
     cardSelector
@@ -23,7 +18,6 @@ class Card {
     this._handleDeleteCardClick = handleDeleteCardClick;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
-    //this._handleOnLoadLikeSet = handleOnLoadLikeSet;
     this._handleOnLoadDeleteBtnSet = handleOnLoadDeleteBtnSet;
   }
 
@@ -55,7 +49,6 @@ class Card {
     this._element
       .querySelector(".card__likebtn")
       .classList.toggle("card__likebtn-change");
-    //this._likeCounter.innerHTML = this._likeAmount.length;
   }
   _handleDeleteBtn() {
     this._element.remove();
@@ -65,10 +58,8 @@ class Card {
   }
   _checkLikeStatus() {
     if (this._likeButton.classList.contains("card__likebtn-change")) {
-      //console.log("Like Button Clicked");
       return true;
     } else {
-      //console.log("Like Button not clicked");
       return false;
     }
   }
@@ -89,19 +80,6 @@ class Card {
     } else {
       this.removeTrashIcon();
     }
-    // data.forEach((obj) => {
-    //   if (obj._id === "63e84cfb5c40dd05d5a06fa4") {
-    //     console.log("data is the same");
-    //   }
-    // });
-    // data.forEach((obj) => {
-    //   if (obj._id === "f978e887083bb5087ebbe974") {
-    //     this.addTrashIcon();
-    //   } else {
-    //     this.removeTrashIcon();
-    //   }
-    // });
-    //console.log(`This cards ID is: ${data._id}`);
   }
 
   // Setting Event Listeners

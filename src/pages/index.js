@@ -102,15 +102,6 @@ function renderCard(data) {
           });
         }
       },
-      //handleOnLoadLikeSet
-      // handleOnLoadLikeSet: () => {
-      //   card._checkIdforLike(data.likes);
-      // },
-
-      // handleOnLoadDeleteBtnSet: () => {
-      //   card._checkIdForDeleteIcon(data);
-      //   //console.log(data._id);
-      // },
     },
     selectors.cardSelector // Card Selector
   );
