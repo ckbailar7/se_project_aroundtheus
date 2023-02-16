@@ -54,12 +54,11 @@ api.getCardList().then((cardData) => {
     selectors.cardWrapper
   );
   sectionCard.renderItems();
-  //sectionCard.updateLikes();
 });
 //Task 3 using patch request for updating user info --- UPDATED USERINFO WITH //userInfo.setUserInfo(res.name, res.about);
-api.updateUserInfo().then((res) => {
-  userInfo.setUserInfo(res.name, res.about);
-});
+// api.updateUserInfo().then((res) => {
+//   userInfo.setUserInfo(res.name, res.about);
+// });
 // DELETE TASK TRIAL
 //api.removeCard("63dffa2740021a0212b2294d").then((res) => console.log(res));
 
@@ -185,5 +184,6 @@ cardModal.setEventListeners();
 const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   profileUpdateForm.closeModal();
   userInfo.setUserInfo(data.name, data.description);
+  api.updateUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();

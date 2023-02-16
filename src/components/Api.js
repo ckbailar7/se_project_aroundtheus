@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 class Api {
   constructor({ baseUrl, authToken }) {
     this._baseUrl = baseUrl;
@@ -35,24 +37,29 @@ class Api {
   }
 
   //Task 3 -  PATCH Request for Editing Profile
-  updateUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Jared Girvan",
-        about: "Group 12",
-      }),
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+  updateUserInfo(name, about) {
+    return (
+      fetch(`${this._baseUrl}/users/me`, {
+        method: "PATCH",
+        headers: {
+          authorization: this._authToken,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          about: about,
+        }),
+      })
+        .then((res) =>
+          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+        )
+        // .then((res) => {
+        //   return res;
+        // })
+        .catch((err) => {
+          console.log(err);
+        })
+    );
   }
 
   //Task 4 - POST Request for Adding A New Card
