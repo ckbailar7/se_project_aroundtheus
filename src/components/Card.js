@@ -1,5 +1,7 @@
 //import { data } from "autoprefixer";
 
+import { data } from "autoprefixer";
+
 class Card {
   constructor(
     {
@@ -60,6 +62,16 @@ class Card {
     }
   }
 
+  _checkIdforLike(data) {
+    data.forEach((obj) => {
+      if (obj._id === "f978e887083bb5087ebbe974") {
+        this.addLike();
+      } else {
+        this.removeLike();
+      }
+    });
+  }
+
   // Setting Event Listeners
   _setEventListeners() {
     // Like Btn Listener
@@ -103,6 +115,7 @@ class Card {
     this._likeCounter.textContent = this._likeAmount.length;
 
     this._setEventListeners();
+    this._handleOnLoadLikeSet();
 
     return this._element;
   }

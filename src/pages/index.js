@@ -91,14 +91,25 @@ function renderCard(data) {
         if (!card._checkLikeStatus()) {
           api.removeLike(data._id).then((res) => {
             card.setLikeCounter(res);
+            card.removeLike();
             console.log("Like Deleted from Server Successfully...");
           });
         } else {
           api.addLike(data._id).then((res) => {
             card.setLikeCounter(res);
+            card.addLike();
             console.log("Like Added to server Successfully");
           });
         }
+      },
+      //handleOnLoadLikeSet
+      handleOnLoadLikeSet: () => {
+        card._checkIdforLike(data.likes);
+        // if (card.likes.contains("539f93f7-dc05-45c3-9b88-f97ff528fbfa")) {
+        //   return true;
+        // } else {
+        //   return false;
+        // }
       },
     },
     selectors.cardSelector // Card Selector
