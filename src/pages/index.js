@@ -33,7 +33,6 @@ const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
 });
-//api.getUserInfo().then((res) => console.log(res));
 
 // - Setting the user info via the server
 api.getUserInfo().then((userData) => {
@@ -132,14 +131,10 @@ function fillProfileForm() {
   const { name, description, avatar } = userInfo.getUserInfo();
   modalSelectors.modalNameInput.value = name;
   modalSelectors.modalDescriptionInput.value = description;
-  //selectors.profileImage.src = avatar;
 }
 
 function fillProfilePictureEditForm() {
-  // const { avatar } = userInfo.getUserInfo().avatar;
-  // selectors.profileImage.src = avatar;
   console.log("Hello from fillProfilePictureEditForm()");
-  //  const { name, description, avatar } = userInfo.getUserInfo().avatar;
   modalSelectors.modalPictureEditInput.value = selectors.profileImage.src;
 }
 
@@ -215,7 +210,6 @@ profileUpdateForm.setEventListeners();
 /*        New Instance for editProfilePicture form              */
 /* -------------------------------------------------------------*/
 //profileUpdatePictureForm
-// Pass in element selector("modal_type_edit-picture") as first parameter, then in structions in the callback for what to do
 const profileUpdatePictureForm = new PopupWithForm(
   ".modal_type_edit-picture",
   (data) => {

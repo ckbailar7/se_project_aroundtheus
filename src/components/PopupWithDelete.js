@@ -11,8 +11,10 @@ export default class PopupwithDelete extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._delBTN.addEventListener("click", () => {
+      this._delBTN.textContent = "Saving ...";
       this._handleDeleteSubmit();
       this.closeModal();
+      this._delBTN.textContent = "yes";
     });
   }
 }

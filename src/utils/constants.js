@@ -55,6 +55,7 @@ export const modalSelectors = {
   ),
   modalButtonOpen: document.querySelector(".profile__title-button"),
   modalAddButtonOpen: document.querySelector(".profile__button"),
+  modalSubmitButton: document.querySelector(".modal__container-button"),
 };
 
 export const profileSelectors = {
