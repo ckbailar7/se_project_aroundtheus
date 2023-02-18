@@ -117,7 +117,7 @@ modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
 });
 
 selectors.profileImage.addEventListener("click", () => {
-  profileUpdatePictureForm.openModal();
+  openProfilePictureEditForm();
 });
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
@@ -129,14 +129,28 @@ previewPopup.setEventListeners();
 /*                   Functions to set Inputs on popup open      */
 /* -------------------------------------------------------------*/
 function fillProfileForm() {
-  const { name, description } = userInfo.getUserInfo();
+  const { name, description, avatar } = userInfo.getUserInfo();
   modalSelectors.modalNameInput.value = name;
   modalSelectors.modalDescriptionInput.value = description;
+  //selectors.profileImage.src = avatar;
+}
+
+function fillProfilePictureEditForm() {
+  // const { avatar } = userInfo.getUserInfo().avatar;
+  // selectors.profileImage.src = avatar;
+  console.log("Hello from fillProfilePictureEditForm()");
+  //  const { name, description, avatar } = userInfo.getUserInfo().avatar;
+  modalSelectors.modalPictureEditInput.value = selectors.profileImage.src;
 }
 
 function openProfileForm() {
   fillProfileForm();
   profileUpdateForm.openModal();
+}
+
+function openProfilePictureEditForm() {
+  fillProfilePictureEditForm();
+  profileUpdatePictureForm.openModal();
 }
 
 /* -------------------------------------------------------------*/
@@ -206,9 +220,10 @@ const profileUpdatePictureForm = new PopupWithForm(
   ".modal_type_edit-picture",
   (data) => {
     console.log(data);
+
     profileUpdatePictureForm.closeModal();
     api.updateProfilePicture(data.link);
-    selectors.profileImage.src = data;
+    selectors.profileImage.src = data.link;
   }
 );
 profileUpdatePictureForm.setEventListeners();

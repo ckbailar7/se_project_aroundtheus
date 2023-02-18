@@ -47,6 +47,7 @@ export const selectors = {
 export const modalSelectors = {
   modalNameInput: document.querySelector("#modal-name"),
   modalDescriptionInput: document.querySelector("#modal-description"),
+  modalPictureEditInput: document.querySelector("#modal-pictureUrl-input"),
   modalContainer: document.querySelector(".modal"),
   modalAddPopup: document.querySelector(".modal_type_add"),
   modalEditProfilePictureForm: document.querySelector(
