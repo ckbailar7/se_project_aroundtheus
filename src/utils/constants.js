@@ -40,6 +40,8 @@ export const selectors = {
   profDescriptionElementIdSelector: ".profile__subtitle",
   cardSelector: "#card-template",
   likeCounterSelector: ".card__like-counter",
+  profileImage: document.querySelector(".profile__image"),
+  profileImageSelector: ".profile__image",
 };
 
 export const modalSelectors = {
@@ -47,6 +49,9 @@ export const modalSelectors = {
   modalDescriptionInput: document.querySelector("#modal-description"),
   modalContainer: document.querySelector(".modal"),
   modalAddPopup: document.querySelector(".modal_type_add"),
+  modalEditProfilePictureForm: document.querySelector(
+    ".modal_type_edit-picture"
+  ),
   modalButtonOpen: document.querySelector(".profile__title-button"),
   modalAddButtonOpen: document.querySelector(".profile__button"),
 };

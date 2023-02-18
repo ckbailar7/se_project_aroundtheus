@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 class Api {
   constructor({ baseUrl, authToken }) {
     this._baseUrl = baseUrl;
@@ -38,28 +36,44 @@ class Api {
 
   //Task 3 -  PATCH Request for Editing Profile
   updateUserInfo(name, about) {
-    return (
-      fetch(`${this._baseUrl}/users/me`, {
-        method: "PATCH",
-        headers: {
-          authorization: this._authToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          about: about,
-        }),
-      })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-        )
-        // .then((res) => {
-        //   return res;
-        // })
-        .catch((err) => {
-          console.log(err);
-        })
-    );
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //Task 9
+  updateProfilePicture(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //Task 4 - POST Request for Adding A New Card
@@ -131,8 +145,6 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .then((res) => {
-        //console.log("Logging from addLike() inside Api.js...");
-        //console.log(res.likes);
         return res;
       })
       .catch((err) => {
@@ -151,8 +163,6 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .then((res) => {
-        //console.log("Logging from removeLike() inside Api.js...");
-        //console.log(res.likes);
         return res;
       })
       .catch((err) => {

@@ -21,7 +21,8 @@ import PopupwithDelete from "../components/PopupWithDelete.js";
 
 const userInfo = new UserInfo(
   selectors.profNameElementIdSelector,
-  selectors.profDescriptionElementIdSelector
+  selectors.profDescriptionElementIdSelector,
+  selectors.profileImageSelector
 );
 
 /* -------------------------------------------------------------*/
@@ -37,6 +38,7 @@ const api = new Api({
 // - Setting the user info via the server
 api.getUserInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
+  userInfo.setAvatarInfo(userData.avatar);
 });
 let sectionCard;
 //api card render
@@ -55,12 +57,6 @@ api.getCardList().then((cardData) => {
   );
   sectionCard.renderItems();
 });
-//Task 3 using patch request for updating user info --- UPDATED USERINFO WITH //userInfo.setUserInfo(res.name, res.about);
-// api.updateUserInfo().then((res) => {
-//   userInfo.setUserInfo(res.name, res.about);
-// });
-// DELETE TASK TRIAL
-//api.removeCard("63dffa2740021a0212b2294d").then((res) => console.log(res));
 
 /* -------------------------------------------------------------*/
 /*                    renderCard Function with API handlers     */
@@ -119,6 +115,10 @@ modalSelectors.modalButtonOpen.addEventListener("click", () => {
 modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
   cardModal.openModal();
 });
+
+selectors.profileImage.addEventListener("click", () => {
+  profileUpdatePictureForm.openModal();
+});
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
 /* -------------------------------------------------------------*/
@@ -153,14 +153,23 @@ const editFormElement =
 const addFormElement =
   modalSelectors.modalAddPopup.querySelector(".modal__container");
 
+const editProfilePictureFormElement =
+  modalSelectors.modalEditProfilePictureForm.querySelector(".modal__container");
+
 const editFormValidator = new FormValidator(
   validationSettings,
   editFormElement
 );
 const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
+const editProfilePictureFormValidator = new FormValidator(
+  validationSettings,
+  editProfilePictureFormElement
+);
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+editProfilePictureFormValidator.enableValidation();
 /* -------------------------------------------------------------*/
 /* -------------------------------------------------------------*/
 /*        New Instances of PopupWithForm                        */
@@ -187,3 +196,19 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
   api.updateUserInfo(data.name, data.description);
 });
 profileUpdateForm.setEventListeners();
+
+/* -------------------------------------------------------------*/
+/*        New Instance for editProfilePicture form              */
+/* -------------------------------------------------------------*/
+//profileUpdatePictureForm
+// Pass in element selector("modal_type_edit-picture") as first parameter, then in structions in the callback for what to do
+const profileUpdatePictureForm = new PopupWithForm(
+  ".modal_type_edit-picture",
+  (data) => {
+    console.log(data);
+    profileUpdatePictureForm.closeModal();
+    api.updateProfilePicture(data.link);
+    selectors.profileImage.src = data;
+  }
+);
+profileUpdatePictureForm.setEventListeners();
