@@ -207,11 +207,19 @@ editProfilePictureFormValidator.enableValidation();
 /*      Instance for popup ADD form                             */
 /* -------------------------------------------------------------*/
 const cardModal = new PopupWithForm(".modal_type_add", (data) => {
-  api.addCard(data).then((res) => {
-    const card = renderCard(res);
-    sectionCard.addItem(card);
-  });
-  cardModal.closeModal();
+  cardModal.isLoading();
+  api
+    .addCard(data)
+    .then((res) => {
+      const card = renderCard(res);
+      sectionCard.addItem(card);
+    })
+    .then(() => {
+      cardModal.isFinishedLoading();
+    })
+    .finally(() => {
+      cardModal.closeModal();
+    });
 });
 cardModal.setEventListeners();
 
@@ -219,9 +227,16 @@ cardModal.setEventListeners();
 /*        Instance for popup Edit form                        */
 /* -------------------------------------------------------------*/
 const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
-  profileUpdateForm.closeModal();
-  userInfo.setUserInfo(data.name, data.description);
-  api.updateUserInfo(data.name, data.description);
+  profileUpdateForm.isLoading();
+  api
+    .updateUserInfo(data.name, data.description)
+    .then(() => {
+      userInfo.setUserInfo(data.name, data.description);
+    })
+    .finally(() => {
+      profileUpdateForm.isFinishedLoadingForEdit();
+      profileUpdateForm.closeModal();
+    });
 });
 profileUpdateForm.setEventListeners();
 
