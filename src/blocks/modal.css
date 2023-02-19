@@ -92,6 +92,17 @@
   font-size: 24px;
   line-height: 1.2;
 }
+
+.modal__container-title-delete {
+  margin: 34px 0 0 36px;
+  color: rgba(0, 0, 0, 1);
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
 .modal__container-input {
   margin: 0 36px;
   font-family: "Inter", Arial, sans-serif;
