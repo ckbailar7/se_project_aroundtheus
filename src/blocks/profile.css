@@ -26,7 +26,7 @@
   background: rgba(0, 0, 0, 0.1);
   height: 27px;
   width: 27px;
-  top: 30px;
+  top: 50px;
   left: 50px;
   display: none;
 }
@@ -210,6 +210,10 @@
     margin-right: 20px;
     flex-shrink: 0;
   }
+  .profile__image-overlay {
+    top: 50px;
+    left: 69px;
+  }
 }
 
 @media screen and (min-width: 730px) and (max-width: 880px) {
@@ -219,5 +223,10 @@
 
   .profile__button {
     margin-right: 20px;
+  }
+
+  .profile__image-overlay {
+    top: 50px;
+    left: 69px;
   }
 }
