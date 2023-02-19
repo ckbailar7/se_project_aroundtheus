@@ -25,7 +25,17 @@
       </header>
       <main>
         <section class="profile">
-          <img class="profile__image" src="" alt="profile image" />
+          <div class="profile__container-image">
+            <img class="profile__image" src="" alt="profile image" />
+            <div class="profile__image-overlay">
+              <img
+                class="profile__image-overlay-image"
+                src="<%=require('./images/Vector.png')%>"
+                alt=""
+              />
+            </div>
+          </div>
+
           <div class="profile__info">
             <div class="profile__info-title">
               <h1 class="profile__title">Jacques Cousteau</h1>

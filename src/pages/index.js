@@ -118,6 +118,25 @@ modalSelectors.modalAddButtonOpen.addEventListener("click", () => {
 selectors.profileImage.addEventListener("click", () => {
   openProfilePictureEditForm();
 });
+
+selectors.profileImage.addEventListener("mouseover", () => {
+  profileSelectors.profilePictureOverlaySelector.classList.add(
+    profileSelectors.profilePictureOverlaySelectorActive
+  );
+  selectors.profileImage.classList.add(
+    profileSelectors.profileImageChangeOpaque
+  );
+});
+
+selectors.profileImage.addEventListener("mouseout", () => {
+  profileSelectors.profilePictureOverlaySelector.classList.remove(
+    profileSelectors.profilePictureOverlaySelectorActive
+  );
+  selectors.profileImage.classList.remove(
+    profileSelectors.profileImageChangeOpaque
+  );
+});
+
 /* -------------------------------------------------------------*/
 /*                    PopupWithImage Instance                   */
 /* -------------------------------------------------------------*/

@@ -60,6 +60,13 @@ export const modalSelectors = {
 
 export const profileSelectors = {
   profileDescriptionElement: document.querySelector(".profile__subtitle"),
-
+  profilePictureOverlaySelector: document.querySelector(
+    ".profile__image-overlay"
+  ),
+  profilePictureOverlayImageSelector: document.querySelector(
+    ".profile__image-overlay-image"
+  ),
+  profilePictureOverlaySelectorActive: "profile__image-overlay-active",
   profileNameElement: document.querySelector(".profile__title"),
+  profileImageChangeOpaque: "profile__image-opaque",
 };

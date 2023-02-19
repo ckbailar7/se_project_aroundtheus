@@ -5,18 +5,42 @@
   justify-content: center;
 }
 
+.profile__container-image {
+  position: relative;
+}
+
 .profile__image {
+  position: relative;
   height: 120px;
   width: 120px;
   border-radius: 50%;
   margin-right: 30px;
 }
 
-.profile__image:hover {
+.profile__image-opaque {
+  opacity: 0.2;
+}
+
+.profile__image-overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+  height: 27px;
+  width: 27px;
+  top: 30px;
+  left: 50px;
+  display: none;
+}
+
+.profile__image-overlay-active {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+/* .profile__image:hover {
   opacity: 0.2;
 
   /* background-image: rgba(0, 0, 0, 0.2); */
-}
 
 .profile__info {
   display: flex;
