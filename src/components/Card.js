@@ -89,7 +89,6 @@ class Card {
       .querySelector(".card__likebtn")
       .addEventListener("click", () => {
         this._handleLikeIcon();
-        //console.log("Hello from like btn");
         this._handleLikeClick();
       });
     // Delete Button Listener

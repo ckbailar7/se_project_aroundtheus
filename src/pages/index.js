@@ -91,7 +91,6 @@ function renderCard(data) {
       //handleDeleteCardClick
       handleDeleteCardClick: () => {
         deletePopupForm.openModal();
-        console.log("Hello from Delete Button");
         deletePopupForm.setSubmitAction(() => {
           deletePopupForm.isLoading();
           api
@@ -99,7 +98,6 @@ function renderCard(data) {
 
             .then(() => {
               card.removeCard();
-              console.log("Delete Successfull");
             })
             .finally(() => {
               deletePopupForm.isFinishedLoading();
@@ -113,13 +111,11 @@ function renderCard(data) {
           api.removeLike(data._id).then((res) => {
             card.setLikeCounter(res);
             card.removeLike();
-            console.log("Like Deleted from Server Successfully...");
           });
         } else {
           api.addLike(data._id).then((res) => {
             card.setLikeCounter(res);
             card.addLike();
-            console.log("Like Added to server Successfully...");
           });
         }
       },
@@ -180,7 +176,6 @@ function fillProfileForm() {
 }
 
 function fillProfilePictureEditForm() {
-  console.log("Hello from fillProfilePictureEditForm()");
   modalSelectors.modalPictureEditInput.value = selectors.profileImage.src;
 }
 
