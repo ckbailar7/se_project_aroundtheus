@@ -4,6 +4,10 @@ class Api {
     this._authToken = authToken;
   }
 
+  getData() {
+    return Promise.all([this.getUserInfo(), this.getCardList()]);
+  }
+
   //Task 1 - GET Request load User Information from the server
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {

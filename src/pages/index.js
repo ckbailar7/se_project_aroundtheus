@@ -34,14 +34,12 @@ const api = new Api({
   authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
 });
 
-// - Setting the user info via the server
-api.getUserInfo().then((userData) => {
+//api.getData().then([userInfo, cardData])
+
+api.getData().then(([userData, cardData]) => {
   userInfo.setUserInfo(userData.name, userData.about);
   userInfo.setAvatarInfo(userData.avatar);
-});
-let sectionCard;
-//api card render
-api.getCardList().then((cardData) => {
+
   sectionCard = new Section(
     {
       items: cardData,
@@ -56,6 +54,29 @@ api.getCardList().then((cardData) => {
   );
   sectionCard.renderItems();
 });
+
+// - Setting the user info via the server
+// api.getUserInfo().then((userData) => {
+//   userInfo.setUserInfo(userData.name, userData.about);
+//   userInfo.setAvatarInfo(userData.avatar);
+// });
+let sectionCard;
+//api card render
+// api.getCardList().then((cardData) => {
+//   sectionCard = new Section(
+//     {
+//       items: cardData,
+
+//       renderer: (data) => {
+//         const card = renderCard(data);
+//         sectionCard.addItem(card);
+//       },
+//     },
+
+//     selectors.cardWrapper
+//   );
+//   sectionCard.renderItems();
+// });
 
 /* -------------------------------------------------------------*/
 /*                    renderCard Function with API handlers     */
