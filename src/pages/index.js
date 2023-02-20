@@ -34,8 +34,6 @@ const api = new Api({
   authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
 });
 
-//api.getData().then([userInfo, cardData])
-
 api.getData().then(([userData, cardData]) => {
   userInfo.setUserInfo(userData.name, userData.about);
   userInfo.setAvatarInfo(userData.avatar);

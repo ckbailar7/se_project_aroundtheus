@@ -38,13 +38,10 @@ export default class PopupWithForm extends Popup {
   }
 
   isLoading() {
-    // this._modalFormButton.textContent = "Saving ...";
     this._submitButton.textContent = "Saving...";
   }
   isFinishedLoading() {
-    setTimeout(() => {
-      console.log("Timeout Functional");
-    }, 5000);
+    setTimeout(() => {}, 5000);
     this._submitButton.textContent = "Create";
   }
 
