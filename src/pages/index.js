@@ -13,7 +13,7 @@ import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupwithDelete from "../components/PopupWithDelete.js";
+import PopupwithConfirmation from "../components/PopupWithDelete.js";
 
 /* -------------------------------------------------------------*/
 /*                         UserInfo Class                       */
@@ -192,7 +192,7 @@ function openProfilePictureEditForm() {
 /* -------------------------------------------------------------*/
 /*                        New instance of popupwithDelete        */
 /* -------------------------------------------------------------*/
-const deletePopupForm = new PopupwithDelete(".modal_type_delete");
+const deletePopupForm = new PopupwithConfirmation(".modal_type_delete");
 deletePopupForm.setEventListeners();
 
 /* -------------------------------------------------------------*/
