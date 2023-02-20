@@ -74,10 +74,18 @@ function renderCard(data) {
         deletePopupForm.openModal();
         console.log("Hello from Delete Button");
         deletePopupForm.setSubmitAction(() => {
-          api.removeCard(data._id).then(() => {
-            card.removeCard();
-            console.log("Delete Successfull");
-          });
+          deletePopupForm.isLoading();
+          api
+            .removeCard(data._id)
+
+            .then(() => {
+              card.removeCard();
+              console.log("Delete Successfull");
+            })
+            .finally(() => {
+              deletePopupForm.isFinishedLoading();
+              deletePopupForm.closeModal();
+            });
         });
       },
       //handleLikeClick
@@ -247,11 +255,18 @@ profileUpdateForm.setEventListeners();
 const profileUpdatePictureForm = new PopupWithForm(
   ".modal_type_edit-picture",
   (data) => {
-    console.log(data);
-
-    profileUpdatePictureForm.closeModal();
-    api.updateProfilePicture(data.link);
-    selectors.profileImage.src = data.link;
+    profileUpdatePictureForm.isLoading();
+    api
+      .updateProfilePicture(data.link)
+      .then(() => {
+        selectors.profileImage.src = data.link;
+      })
+      .then(() => {
+        profileUpdatePictureForm.isFinishedLoadingForEdit();
+      })
+      .finally(() => {
+        profileUpdatePictureForm.closeModal();
+      });
   }
 );
 profileUpdatePictureForm.setEventListeners();

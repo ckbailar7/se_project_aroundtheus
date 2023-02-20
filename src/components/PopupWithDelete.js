@@ -3,6 +3,7 @@ export default class PopupwithDelete extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
     this._delBTN = this._popupElement.querySelector(".modal__container-button");
+    this._deleteYesButton = this._popupElement.querySelector("#delete-yesbtn");
   }
   // for line 84 index.js
   setSubmitAction(action) {
@@ -11,10 +12,22 @@ export default class PopupwithDelete extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._delBTN.addEventListener("click", () => {
-      this._delBTN.textContent = "Saving ...";
       this._handleDeleteSubmit();
-      this.closeModal();
-      this._delBTN.textContent = "yes";
+      //this.closeModal();
     });
+  }
+
+  closeModal() {
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("keyup", this._handleEscClose);
+  }
+
+  isLoading() {
+    this._deleteYesButton.textContent = "Deleting ...";
+  }
+
+  isFinishedLoading() {
+    setTimeout(() => {}, 5000);
+    this._deleteYesButton.textContent = "Yes";
   }
 }

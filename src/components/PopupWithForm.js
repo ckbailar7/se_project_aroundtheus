@@ -52,4 +52,9 @@ export default class PopupWithForm extends Popup {
     setTimeout(() => {}, 5000);
     this._submitButton.textContent = "Save";
   }
+
+  isFinishedLoadingForDelete() {
+    setTimeout(() => {}, 5000);
+    this._submitButton.textContent = "Yes";
+  }
 }
