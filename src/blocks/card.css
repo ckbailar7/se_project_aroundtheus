@@ -43,7 +43,6 @@
   width: 21px;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 0 10px;
   border: none;
 }
 .card__like-counter {
@@ -54,7 +53,6 @@
   font-size: 13px;
   line-height: 1.2;
   margin-top: 50px;
-  padding-right: 20px;
   text-align: center;
   color: #000000;
 }
