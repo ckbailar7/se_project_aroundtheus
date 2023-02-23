@@ -31,27 +31,35 @@ const userInfo = new UserInfo(
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  authToken: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
+  headers: {
+    authorization: "539f93f7-dc05-45c3-9b88-f97ff528fbfa",
+    "Content-Type": "application/json",
+  },
 });
 
-api.getData().then(([userData, cardData]) => {
-  userInfo.setUserInfo(userData.name, userData.about);
-  userInfo.setAvatarInfo(userData.avatar);
+api
+  .getData()
+  .then(([userData, cardData]) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatarInfo(userData.avatar);
 
-  sectionCard = new Section(
-    {
-      items: cardData,
+    sectionCard = new Section(
+      {
+        items: cardData,
 
-      renderer: (data) => {
-        const card = renderCard(data);
-        sectionCard.addItem(card);
+        renderer: (data) => {
+          const card = renderCard(data);
+          sectionCard.addItem(card);
+        },
       },
-    },
 
-    selectors.cardWrapper
-  );
-  sectionCard.renderItems();
-});
+      selectors.cardWrapper
+    );
+    sectionCard.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // - Setting the user info via the server
 // api.getUserInfo().then((userData) => {
@@ -237,10 +245,10 @@ const cardModal = new PopupWithForm(".modal_type_add", (data) => {
       sectionCard.addItem(card);
     })
     .then(() => {
-      cardModal.isFinishedLoading();
+      cardModal.closeModal();
     })
     .finally(() => {
-      cardModal.closeModal();
+      cardModal.isFinishedLoading();
     });
 });
 cardModal.setEventListeners();
@@ -254,10 +262,10 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
     .updateUserInfo(data.name, data.description)
     .then(() => {
       userInfo.setUserInfo(data.name, data.description);
+      profileUpdateForm.closeModal();
     })
     .finally(() => {
-      profileUpdateForm.isFinishedLoadingForEdit();
-      profileUpdateForm.closeModal();
+      profileUpdateForm.isFinishedLoading();
     });
 });
 profileUpdateForm.setEventListeners();
@@ -276,10 +284,10 @@ const profileUpdatePictureForm = new PopupWithForm(
         selectors.profileImage.src = data.link;
       })
       .then(() => {
-        profileUpdatePictureForm.isFinishedLoadingForEdit();
+        profileUpdatePictureForm.closeModal();
       })
       .finally(() => {
-        profileUpdatePictureForm.closeModal();
+        profileUpdatePictureForm.isFinishedLoading();
       });
   }
 );

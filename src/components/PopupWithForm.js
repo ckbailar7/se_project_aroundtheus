@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
     this._modalFormButton = this._popupElement.querySelector(
       ".modal__container-button"
     );
-    this._submitButton = this._popupElement.querySelector("#submit-button");
   }
 
   _getInputValues() {
@@ -41,9 +40,12 @@ export default class PopupWithForm extends Popup {
     this._modalFormButton.textContent = "Saving...";
   }
   isFinishedLoading() {
-    setTimeout(() => {}, 5000);
-    this._modalFormButton.textContent = "Create";
+    this._modalFormButton.textContent = "Save";
   }
+  // isFinishedLoading() {
+  //   setTimeout(() => {}, 5000);
+  //   this._modalFormButton.textContent = "Create";
+  // }
 
   isFinishedLoadingForEdit() {
     setTimeout(() => {}, 5000);

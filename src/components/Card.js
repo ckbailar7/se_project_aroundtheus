@@ -46,9 +46,7 @@ class Card {
 
   // Handlers
   _handleLikeIcon() {
-    this._element
-      .querySelector(".card__likebtn")
-      .classList.toggle("card__likebtn-change");
+    this._likeButton.classList.toggle("card__likebtn-change");
   }
   _handleDeleteBtn() {
     this._element.remove();
@@ -85,12 +83,10 @@ class Card {
   // Setting Event Listeners
   _setEventListeners() {
     // Like Btn Listener
-    this._element
-      .querySelector(".card__likebtn")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-        this._handleLikeClick();
-      });
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
+      this._handleLikeClick();
+    });
     // Delete Button Listener
     this._element
       .querySelector(".card__deletebtn")
