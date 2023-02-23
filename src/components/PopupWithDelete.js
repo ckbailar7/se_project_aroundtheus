@@ -4,6 +4,7 @@ export default class PopupwithConfirmation extends Popup {
     super(popupSelector);
     this._delBTN = this._popupElement.querySelector(".modal__container-button");
     this._deleteYesButton = this._popupElement.querySelector("#delete-yesbtn");
+    this._submitBtnText = this._deleteYesButton.textContent;
   }
   // for line 84 index.js
   setSubmitAction(action) {
@@ -17,16 +18,19 @@ export default class PopupwithConfirmation extends Popup {
     });
   }
 
-  // closeModal() {
-  //   this._popupElement.classList.remove("modal_opened");
-  //   document.removeEventListener("keyup", this._handleEscClose);
-  // }
-
   isLoading() {
     this._deleteYesButton.textContent = "Deleting ...";
   }
 
   isFinishedLoading() {
     this._deleteYesButton.textContent = "Yes";
+  }
+
+  renderLoading(isLoading, loadingText = "Saving...") {
+    if (isLoading) {
+      this._deleteYesButton.textContent = loadingText;
+    } else {
+      this._deleteYesButton.textContent = this._submitBtnText;
+    }
   }
 }

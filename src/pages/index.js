@@ -79,15 +79,17 @@ function renderCard(data) {
       handleDeleteCardClick: () => {
         deletePopupForm.openModal();
         deletePopupForm.setSubmitAction(() => {
-          deletePopupForm.isLoading();
+          //deletePopupForm.isLoading();
+          deletePopupForm.renderLoading(true);
           api
             .removeCard(data._id)
             .then(() => {
               card.removeCard();
-              deletePopupForm.closeModal();
+              deletePopupForm.renderLoading(false);
             })
             .finally(() => {
-              deletePopupForm.isFinishedLoading();
+              //deletePopupForm.isFinishedLoading();
+              deletePopupForm.closeModal();
             });
         });
       },
@@ -225,7 +227,7 @@ editProfilePictureFormValidator.enableValidation();
 /*      Instance for popup ADD form                             */
 /* -------------------------------------------------------------*/
 const cardModal = new PopupWithForm(".modal_type_add", (data) => {
-  cardModal.isLoading();
+  cardModal.renderLoading(true);
   api
     .addCard(data)
     .then((res) => {
@@ -233,13 +235,13 @@ const cardModal = new PopupWithForm(".modal_type_add", (data) => {
       sectionCard.addItem(card);
     })
     .then(() => {
-      cardModal.closeModal();
+      cardModal.renderLoading(false);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      cardModal.isFinishedLoading();
+      cardModal.closeModal();
     });
 });
 cardModal.setEventListeners();
@@ -248,18 +250,18 @@ cardModal.setEventListeners();
 /*        Instance for popup Edit form                        */
 /* -------------------------------------------------------------*/
 const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
-  profileUpdateForm.isLoading();
+  profileUpdateForm.renderLoading(true);
   api
     .updateUserInfo(data.name, data.description)
     .then(() => {
       userInfo.setUserInfo(data.name, data.description);
-      profileUpdateForm.closeModal();
+      profileUpdateForm.renderLoading(false);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      profileUpdateForm.isFinishedLoading();
+      profileUpdateForm.closeModal();
     });
 });
 profileUpdateForm.setEventListeners();
@@ -271,21 +273,20 @@ profileUpdateForm.setEventListeners();
 const profileUpdatePictureForm = new PopupWithForm(
   ".modal_type_edit-picture",
   (data) => {
-    profileUpdatePictureForm.isLoading();
+    profileUpdatePictureForm.renderLoading(true);
     api
       .updateProfilePicture(data.link)
       .then(() => {
-        //selectors.profileImage.src = data.link;
         userInfo.setAvatarInfo(data.link);
       })
       .then(() => {
-        profileUpdatePictureForm.closeModal();
+        profileUpdatePictureForm.renderLoading(false);
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        profileUpdatePictureForm.isFinishedLoading();
+        profileUpdatePictureForm.closeModal();
       });
   }
 );
