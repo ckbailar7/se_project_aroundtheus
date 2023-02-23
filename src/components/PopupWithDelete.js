@@ -14,7 +14,6 @@ export default class PopupwithConfirmation extends Popup {
     super.setEventListeners();
     this._delBTN.addEventListener("click", () => {
       this._handleDeleteSubmit();
-      //this.closeModal();
     });
   }
 

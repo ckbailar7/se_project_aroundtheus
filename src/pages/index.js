@@ -6,6 +6,7 @@ import {
   selectors,
   profileSelectors,
   modalSelectors,
+  UserIDVar,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import Card from "../components/Card.js";
@@ -95,7 +96,7 @@ function renderCard(data) {
       },
       //handleLikeClick
       handleLikeClick: () => {
-        if (!card._checkLikeStatus()) {
+        if (card._checkLikeStatus()) {
           api
             .removeLike(data._id)
             .then((res) => {
@@ -118,7 +119,9 @@ function renderCard(data) {
         }
       },
     },
-    selectors.cardSelector // Card Selector
+    selectors.cardSelector, // Card Selector
+    //My CURRENT User ID variable
+    UserIDVar.idVariableSelector
   );
   return card.getView();
 }

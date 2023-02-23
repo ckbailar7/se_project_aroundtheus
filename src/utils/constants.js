@@ -25,6 +25,10 @@ export const initialCards = [
   },
 ];
 
+export const UserIDVar = {
+  idVariableSelector: "f978e887083bb5087ebbe974",
+};
+
 export const validationSettings = {
   inputSelector: ".modal__container-input",
   submitButtonSelector: ".modal__container-button",
