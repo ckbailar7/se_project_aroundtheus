@@ -3,7 +3,6 @@ export default class Section {
     this._items = items;
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
-    this._likeElement = this._container.querySelector(".card__like-counter");
   }
 
   renderItems() {

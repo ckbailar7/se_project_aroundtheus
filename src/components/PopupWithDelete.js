@@ -17,17 +17,16 @@ export default class PopupwithConfirmation extends Popup {
     });
   }
 
-  closeModal() {
-    this._popupElement.classList.remove("modal_opened");
-    document.removeEventListener("keyup", this._handleEscClose);
-  }
+  // closeModal() {
+  //   this._popupElement.classList.remove("modal_opened");
+  //   document.removeEventListener("keyup", this._handleEscClose);
+  // }
 
   isLoading() {
     this._deleteYesButton.textContent = "Deleting ...";
   }
 
   isFinishedLoading() {
-    setTimeout(() => {}, 5000);
     this._deleteYesButton.textContent = "Yes";
   }
 }

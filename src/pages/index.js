@@ -61,28 +61,7 @@ api
     console.log(err);
   });
 
-// - Setting the user info via the server
-// api.getUserInfo().then((userData) => {
-//   userInfo.setUserInfo(userData.name, userData.about);
-//   userInfo.setAvatarInfo(userData.avatar);
-// });
 let sectionCard;
-//api card render
-// api.getCardList().then((cardData) => {
-//   sectionCard = new Section(
-//     {
-//       items: cardData,
-
-//       renderer: (data) => {
-//         const card = renderCard(data);
-//         sectionCard.addItem(card);
-//       },
-//     },
-
-//     selectors.cardWrapper
-//   );
-//   sectionCard.renderItems();
-// });
 
 /* -------------------------------------------------------------*/
 /*                    renderCard Function with API handlers     */
@@ -103,28 +82,37 @@ function renderCard(data) {
           deletePopupForm.isLoading();
           api
             .removeCard(data._id)
-
             .then(() => {
               card.removeCard();
+              deletePopupForm.closeModal();
             })
             .finally(() => {
               deletePopupForm.isFinishedLoading();
-              deletePopupForm.closeModal();
             });
         });
       },
       //handleLikeClick
       handleLikeClick: () => {
         if (!card._checkLikeStatus()) {
-          api.removeLike(data._id).then((res) => {
-            card.setLikeCounter(res);
-            card.removeLike();
-          });
+          api
+            .removeLike(data._id)
+            .then((res) => {
+              card.setLikeCounter(res);
+              card.removeLike();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
-          api.addLike(data._id).then((res) => {
-            card.setLikeCounter(res);
-            card.addLike();
-          });
+          api
+            .addLike(data._id)
+            .then((res) => {
+              card.setLikeCounter(res);
+              card.addLike();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
     },
@@ -247,6 +235,9 @@ const cardModal = new PopupWithForm(".modal_type_add", (data) => {
     .then(() => {
       cardModal.closeModal();
     })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       cardModal.isFinishedLoading();
     });
@@ -263,6 +254,9 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
     .then(() => {
       userInfo.setUserInfo(data.name, data.description);
       profileUpdateForm.closeModal();
+    })
+    .catch((err) => {
+      console.log(err);
     })
     .finally(() => {
       profileUpdateForm.isFinishedLoading();
@@ -281,10 +275,14 @@ const profileUpdatePictureForm = new PopupWithForm(
     api
       .updateProfilePicture(data.link)
       .then(() => {
-        selectors.profileImage.src = data.link;
+        //selectors.profileImage.src = data.link;
+        userInfo.setAvatarInfo(data.link);
       })
       .then(() => {
         profileUpdatePictureForm.closeModal();
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => {
         profileUpdatePictureForm.isFinishedLoading();

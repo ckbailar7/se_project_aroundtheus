@@ -38,8 +38,6 @@ class Api {
         name: name,
         about: about,
       }),
-    }).catch((err) => {
-      console.log(err);
     });
   }
 
@@ -50,8 +48,6 @@ class Api {
       body: JSON.stringify({
         avatar: avatar,
       }),
-    }).catch((err) => {
-      console.log(err);
     });
   }
 
@@ -63,8 +59,6 @@ class Api {
         name,
         link,
       }),
-    }).catch((err) => {
-      console.log(err);
     });
   }
 
@@ -81,26 +75,18 @@ class Api {
     return this._request(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    })
-      .then((res) => {
-        return res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => {
+      return res;
+    });
   }
 
   removeLike(cardId) {
     return this._request(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((res) => {
-        return res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => {
+      return res;
+    });
   }
 }
 
