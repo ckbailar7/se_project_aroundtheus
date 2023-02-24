@@ -80,17 +80,18 @@ function renderCard(data) {
       handleDeleteCardClick: () => {
         deletePopupForm.openModal();
         deletePopupForm.setSubmitAction(() => {
-          //deletePopupForm.isLoading();
           deletePopupForm.renderLoading(true);
           api
             .removeCard(data._id)
             .then(() => {
               card.removeCard();
-              deletePopupForm.renderLoading(false);
+              deletePopupForm.closeModal();
+            })
+            .catch((err) => {
+              console.log(err);
             })
             .finally(() => {
-              //deletePopupForm.isFinishedLoading();
-              deletePopupForm.closeModal();
+              deletePopupForm.renderLoading(false);
             });
         });
       },
@@ -238,13 +239,13 @@ const cardModal = new PopupWithForm(".modal_type_add", (data) => {
       sectionCard.addItem(card);
     })
     .then(() => {
-      cardModal.renderLoading(false);
+      cardModal.closeModal();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      cardModal.closeModal();
+      cardModal.renderLoading(false);
     });
 });
 cardModal.setEventListeners();
@@ -258,13 +259,13 @@ const profileUpdateForm = new PopupWithForm(".modal_type_edit", (data) => {
     .updateUserInfo(data.name, data.description)
     .then(() => {
       userInfo.setUserInfo(data.name, data.description);
-      profileUpdateForm.renderLoading(false);
+      profileUpdateForm.closeModal();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      profileUpdateForm.closeModal();
+      profileUpdateForm.renderLoading(false);
     });
 });
 profileUpdateForm.setEventListeners();
@@ -283,13 +284,13 @@ const profileUpdatePictureForm = new PopupWithForm(
         userInfo.setAvatarInfo(data.link);
       })
       .then(() => {
-        profileUpdatePictureForm.renderLoading(false);
+        profileUpdatePictureForm.closeModal();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        profileUpdatePictureForm.closeModal();
+        profileUpdatePictureForm.renderLoading(false);
       });
   }
 );
